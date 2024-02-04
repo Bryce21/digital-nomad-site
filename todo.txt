@@ -1,0 +1,12 @@
+
+
+
+
+Front end:
+    Get different color for different types of markers
+    Show better info window data
+    Add website link to info window?
+    Add popup to blue home marker
+
+Backend:
+    Add website link to nearby response?

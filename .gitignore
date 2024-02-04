@@ -4,3 +4,7 @@ digital-nomad-site.iml
 **/node_modules/*
 **/backend.iml
 **/dist/*
+
+src/backend/.env
+src/frontend/.env
+/.vscode/*

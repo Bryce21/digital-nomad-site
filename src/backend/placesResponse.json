@@ -1,0 +1,1007 @@
+
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.431117,
+        "lng": 26.099881
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.43203602989272,
+          "lng": 26.1006017
+        },
+        "southwest": {
+          "lat": 44.42933637010728,
+          "lng": 26.0977189
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Aubergine",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 4032,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/105715635458010418185\">Mar Lady</a>"
+        ],
+        "photo_reference": "AWU5eFh-r32aDoe1bjcHQFP9odsTu_0m9HtjJqnvea09WdQKpDiAPp8i-0E_uHYbWjgFG_kEw5bWMtCjQnMQfWFusfSjEwpUyMS7kicBVx33uTlJ7roCzKp8ak7EH09Ukhagzo7B6CBnNx0uK0YZ4NWrYg8jwzFbjOaykR9oWIXb870irHhe",
+        "width": 3024
+      }
+    ],
+    "place_id": "ChIJ3XH87D__sUARxqIeoI3zn_s",
+    "plus_code": {
+      "compound_code": "C3JX+CX Bucharest",
+      "global_code": "8GP8C3JX+CX"
+    },
+    "price_level": 2,
+    "rating": 4.4,
+    "reference": "ChIJ3XH87D__sUARxqIeoI3zn_s",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 3082,
+    "vicinity": "Strada Smârdan 33, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4449895,
+        "lng": 26.1137014
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.44639772989272,
+          "lng": 26.11506197989272
+        },
+        "southwest": {
+          "lat": 44.44369807010728,
+          "lng": 26.11236232010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "balls.",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 4080,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/104089312526626594507\">Emilia Palaghita</a>"
+        ],
+        "photo_reference": "AWU5eFjGtq1sKT9oYy4uGQkLQ8W0L2NW5IVt5crvKruYJZf8iQ7KTJ2lgHzNSgwdV_o0k3WHhwA24RP5gsuXgAmeG-8ZWIpytwvL7z_uS74JXohj8f0qUxYxYNwrLIwAiYtwoAkEmskgVfeGO3Z4XYq5NZbKt-P0rjj1MtS8EZ4WzPqR4Fwg",
+        "width": 3072
+      }
+    ],
+    "place_id": "ChIJLTxKYCP5sUARoLbHwCFWpbA",
+    "plus_code": {
+      "compound_code": "C4V7+XF Bucharest",
+      "global_code": "8GP8C4V7+XF"
+    },
+    "price_level": 2,
+    "rating": 4.6,
+    "reference": "ChIJLTxKYCP5sUARoLbHwCFWpbA",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 1226,
+    "vicinity": "Bulevardul Dacia 114, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.44773989999999,
+        "lng": 26.1040867
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.44910897989271,
+          "lng": 26.10543052989272
+        },
+        "southwest": {
+          "lat": 44.44640932010727,
+          "lng": 26.10273087010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Beca's Kitchen",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 2322,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/113108888001991941440\">Lorin Dumitru</a>"
+        ],
+        "photo_reference": "AWU5eFjdvsIwLijlbT1CuQrh8Jpxl7oIcqqex8g-N8tL7j24MaWLlcc45Ckjqk4zId5bA-vyK-6h-M9WhJP3dg0qUKdBUjR9zzYaeDufZAbhr5fediNEBXiyrMd4fFCxRtgbbdphqSg5HHTQRlMCL7Z_WJRKAEe1PMFfK_eezEOt2c_ENLea",
+        "width": 4128
+      }
+    ],
+    "place_id": "ChIJP4fAflL_sUARkazz-uJG5pY",
+    "plus_code": {
+      "compound_code": "C4X3+3J Bucharest",
+      "global_code": "8GP8C4X3+3J"
+    },
+    "price_level": 2,
+    "rating": 4.7,
+    "reference": "ChIJP4fAflL_sUARkazz-uJG5pY",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 721,
+    "vicinity": "Strada Mihai Eminescu 80, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4274931,
+        "lng": 26.1236795
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.42878392989272,
+          "lng": 26.12504837989272
+        },
+        "southwest": {
+          "lat": 44.42608427010727,
+          "lng": 26.12234872010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Restaurant Grill Verdetei 5",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3120,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/117904974462505382940\">wrobi32</a>"
+        ],
+        "photo_reference": "AWU5eFi65TDAVTpeKaE2sTTfsEuxhmlXjhsbmBi8JuLRRdq6EnWwfyMbN7RBidfqlVxpzowtQlt8dPpBmVAofp8VN84gHd95V4sH2gnvK_TQxxj4kz98_351A5N3awEsLe0jef4ddKjAjWxrf6rzTSs4hA3h9y0iZXUog6ucPjzh5oO4ksu6",
+        "width": 4160
+      }
+    ],
+    "place_id": "ChIJGYqi7iD_sUARVvNk-LZ1Eb8",
+    "plus_code": {
+      "compound_code": "C4GF+XF Bucharest",
+      "global_code": "8GP8C4GF+XF"
+    },
+    "price_level": 1,
+    "rating": 4.5,
+    "reference": "ChIJGYqi7iD_sUARVvNk-LZ1Eb8",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 450,
+    "vicinity": "Strada Verdeței 5, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4304028,
+        "lng": 26.1026109
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.43194537989272,
+          "lng": 26.10440707989272
+        },
+        "southwest": {
+          "lat": 44.42924572010728,
+          "lng": 26.10170742010727
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "City Grill Covaci",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 1365,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/112113123939659473714\">A Google User</a>"
+        ],
+        "photo_reference": "AWU5eFiBKPYlrMY53u7n9ewgY_fpBvveCnkLuixUdinCBrlvoBJmsKt-09021w3QeqGrXLGthZEfJfK1OsINi_X7ZzSD0SbCofIcqR11sLuZeTGn5MsCvNG0-TorDg-Gq25eELJXl1mjNg8ItUSftB_mjDl-4GfYmESyUPBiNQKRSzN3SUz_",
+        "width": 2048
+      }
+    ],
+    "place_id": "ChIJrWaUNz7_sUARWlAh4laJcc0",
+    "plus_code": {
+      "compound_code": "C4J3+52 Bucharest",
+      "global_code": "8GP8C4J3+52"
+    },
+    "price_level": 2,
+    "rating": 4.4,
+    "reference": "ChIJrWaUNz7_sUARWlAh4laJcc0",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 4389,
+    "vicinity": "Strada Covaci 19, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.47773979999999,
+        "lng": 26.104676
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.47939857989272,
+          "lng": 26.10594282989272
+        },
+        "southwest": {
+          "lat": 44.47669892010728,
+          "lng": 26.10324317010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Nor Sky Casual Restaurant",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/112396261733804985040\">Oreng</a>"
+        ],
+        "photo_reference": "AWU5eFgXVBUXkJ-W8IlpohLGHUG_dF3NfLULM-hJEyKGJTVgNlxb37iHRDw9In0tCsK351gfyPTdQkN2d1K6DgkCf7g6SPu1MLwXj1ZzegjietbJT_0Y4kWbju3hfd70gZqyOjrt5k-aka-M1ysDfzT54G0dsHUOCNKlqfwFfL1AmZNhAc2l",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJW89yqHACskAR39z1zswRWec",
+    "plus_code": {
+      "compound_code": "F4H3+3V Bucharest",
+      "global_code": "8GP8F4H3+3V"
+    },
+    "price_level": 3,
+    "rating": 4.7,
+    "reference": "ChIJW89yqHACskAR39z1zswRWec",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 7408,
+    "vicinity": "Str. Barbu Văcărescu 201, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.429051,
+        "lng": 26.1098627
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.43040197989272,
+          "lng": 26.11121442989272
+        },
+        "southwest": {
+          "lat": 44.42770232010728,
+          "lng": 26.10851477010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Restaurant Bucătărașul",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 900,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/108126536735420045766\">A Google User</a>"
+        ],
+        "photo_reference": "AWU5eFgphf83zOomp5Ahid-dyZPBcB9rg3KjA-GDZ8OkiXyzDlbPuu5uvC7FEeE0mUsl3QBn2M5HrhHGw1uwV9LduQGSPdsrAgfgjQjxk4_JZlzjaG6QAXkZunoOsmiOuqUv_rkggCsKkIuIMwkQ5LLcBJAV92BVe_nqtAdAGuYMx2JPdDNk",
+        "width": 1600
+      }
+    ],
+    "place_id": "ChIJ3WgmFD3_sUAR-zls60ZavGg",
+    "plus_code": {
+      "compound_code": "C4H5+JW Bucharest",
+      "global_code": "8GP8C4H5+JW"
+    },
+    "price_level": 1,
+    "rating": 4.5,
+    "reference": "ChIJ3WgmFD3_sUAR-zls60ZavGg",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 1062,
+    "vicinity": "Strada Olteni 3, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4410252,
+        "lng": 26.0929154
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.44234612989273,
+          "lng": 26.09414302989273
+        },
+        "southwest": {
+          "lat": 44.43964647010728,
+          "lng": 26.09144337010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Sharkia",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3413,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/107224563548329319826\">A Google User</a>"
+        ],
+        "photo_reference": "AWU5eFjjbEGaNPop0HcwAFgG11F1QAnNACOr9F7bs9S2RcvrXqekwB4-NfIP0Ghz2O-d-7cBHF6ePNdjhrfTw7C9kM8I-yo6pxYQwIlpnkkXk_jA6PcCsShup7Vg5G6WFW5NGiONNq2XPsy1V6oNeX5gkzvIKhtdrRK4skWC61rLpaIs7iKT",
+        "width": 5119
+      }
+    ],
+    "place_id": "ChIJSyZlTUX_sUARaW8BcTBtvMU",
+    "plus_code": {
+      "compound_code": "C3RV+C5 Bucharest",
+      "global_code": "8GP8C3RV+C5"
+    },
+    "price_level": 2,
+    "rating": 4.5,
+    "reference": "ChIJSyZlTUX_sUARaW8BcTBtvMU",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 794,
+    "vicinity": "Strada Luterană 2-4, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4422888,
+        "lng": 26.0953614
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.44365267989272,
+          "lng": 26.09669692989273
+        },
+        "southwest": {
+          "lat": 44.44095302010728,
+          "lng": 26.09399727010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Restaurant Savart",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 2048,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/115809740324091549373\">A Google User</a>"
+        ],
+        "photo_reference": "AWU5eFhToMte6RrrjB3EmHRPpc9SVSf2Fr-GrA5SlRKKafj14GUEf3emCDMbjkOqJSPGFqq3XndmQ-oBjsuznsEZmVbal9H0WnTNuWF-BUU8mZh1ule_sMm6x0lzUDMenZCDHo2HYx-f_IPxdtXRxStN3jLi0qQ8c2Hx8i6L1KDZgOI1Y2FO",
+        "width": 1498
+      }
+    ],
+    "place_id": "ChIJO6_Lw0__sUARkfWrqgI9PMw",
+    "plus_code": {
+      "compound_code": "C3RW+W5 Bucharest",
+      "global_code": "8GP8C3RW+W5"
+    },
+    "price_level": 3,
+    "rating": 4.5,
+    "reference": "ChIJO6_Lw0__sUARkfWrqgI9PMw",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 861,
+    "vicinity": "Strada George Enescu nr. 2-4, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4276315,
+        "lng": 26.0944567
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.42877917989271,
+          "lng": 26.09578937989272
+        },
+        "southwest": {
+          "lat": 44.42607952010727,
+          "lng": 26.09308972010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Ergo Restaurant",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 1500,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/109586766683756605353\">A Google User</a>"
+        ],
+        "photo_reference": "AWU5eFg5IQ4gpU_z2ukGYlawzYGW9S7VCXgM7vJLU9SYcU6viQMMOaXoGtRCVgFrCzsi1PurlOBjp5OlzCQfYjNscNVOYWuluSXQmryY7DNbDU8AlEwDrx57S2mrGNEknNG1M9L7ecxfaE0M4ZrcGfh_BJsCF1ZGXy9lGmkbHhWO4RTjPnR4",
+        "width": 1500
+      }
+    ],
+    "place_id": "ChIJORQiGt__sUARPbzy9TSWquI",
+    "plus_code": {
+      "compound_code": "C3HV+2Q Bucharest",
+      "global_code": "8GP8C3HV+2Q"
+    },
+    "price_level": 2,
+    "rating": 4.7,
+    "reference": "ChIJORQiGt__sUARPbzy9TSWquI",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 559,
+    "vicinity": "Bulevardul Unirii 5, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4426699,
+        "lng": 26.1214148
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.44402407989272,
+          "lng": 26.12269402989272
+        },
+        "southwest": {
+          "lat": 44.44132442010728,
+          "lng": 26.11999437010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Banjo Jack: Restaurant American, BBQ, Grill",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3000,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/108086302213694346938\">Adrian Salcu</a>"
+        ],
+        "photo_reference": "AWU5eFjBf8OZgZNsRcou1EoDDGm-YERQNy9W0xn3Lv9MLkkXouoisWt0TbiY2Oz7PGXLAlg6GYoL34CdtuWIzWhNU7Yvnzx8gxRT019Nauwl5Zmb3Y6AMcGP1vfXStDIfRziM4ymOw1puT6oEz8kp8HnvBXDKQc-EdLIkVPUMphT09UJmW4U",
+        "width": 4000
+      }
+    ],
+    "place_id": "ChIJJ8fgeof_sUARJkdppBsDEdQ",
+    "plus_code": {
+      "compound_code": "C4VC+3H Bucharest",
+      "global_code": "8GP8C4VC+3H"
+    },
+    "price_level": 2,
+    "rating": 4.4,
+    "reference": "ChIJJ8fgeof_sUARJkdppBsDEdQ",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 695,
+    "vicinity": "Strada Iancu Căpitanu 26, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4151138,
+        "lng": 26.0142281
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.41646547989272,
+          "lng": 26.01559167989272
+        },
+        "southwest": {
+          "lat": 44.41376582010728,
+          "lng": 26.01289202010727
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Restaurant Basilico",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 810,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/103432390215186480766\">A Google User</a>"
+        ],
+        "photo_reference": "AWU5eFh44GnObbLtpE0KVXDjarNULx9aHE0BFnT9T4jp7c9o9ZW0musZ240NSeDtWb4uUOAiue6CCNhNNCd9KL_ePsoSCNfazaYPrZYiTOvT3huf86R3ybzTwggYDok8pUIh9wqpaU_e8hPhZsI2RhDDMkKdiFXdMLqfOHlkoez7CHHZbxP4",
+        "width": 1440
+      }
+    ],
+    "place_id": "ChIJpy1wQkEAskAR69__dFMTWDc",
+    "plus_code": {
+      "compound_code": "C287+2M Bucharest",
+      "global_code": "8GP8C287+2M"
+    },
+    "price_level": 2,
+    "rating": 4.5,
+    "reference": "ChIJpy1wQkEAskAR69__dFMTWDc",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 1338,
+    "vicinity": "Strada Valea Oltului 61, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.44296569999999,
+        "lng": 26.1021691
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.44427052989272,
+          "lng": 26.10355837989272
+        },
+        "southwest": {
+          "lat": 44.44157087010727,
+          "lng": 26.10085872010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Restaurant HOME",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 1836,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/102697235081109602539\">Restaurant Home</a>"
+        ],
+        "photo_reference": "AWU5eFh-iIuNIKQMeXUvdzPD48dekgIu6gfi1h44_2L-36kQKgG9AEboaI5zvStCyqhWGqh5qwjhBndFQjfYJ19S972T2zWpv9XEYVFA-BGtKO8NOBf9Mf9jk4EAlwfLFfRVQY4-VF1x_lYLdqCV-tNboppcvnWC5nZK3kyv0QTKVn_W9Z6L",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJtVuCyk7_sUARunm4dy9-7U0",
+    "plus_code": {
+      "compound_code": "C4V2+5V Bucharest",
+      "global_code": "8GP8C4V2+5V"
+    },
+    "price_level": 2,
+    "rating": 4.3,
+    "reference": "ChIJtVuCyk7_sUARunm4dy9-7U0",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "cafe",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 379,
+    "vicinity": "Strada Alexandru Dimitrie Xenopol 1, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4330149,
+        "lng": 26.1006477
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.43440602989272,
+          "lng": 26.10190337989272
+        },
+        "southwest": {
+          "lat": 44.43170637010727,
+          "lng": 26.09920372010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Beef Room",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 4032,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/117788134974078782045\">JOSE MARIA TALARN BRICH</a>"
+        ],
+        "photo_reference": "AWU5eFgPfiIJy4WgsvI0fgyJQCYw9KvJJdQizffIXRU4of3hXyl9SbVldP_jmDTbcIrD4WkY2FC47Zi7mnkXDS1_mmdBXI-nSJbb5R8592Z2kEiQYheRUdD_W2AtGHQSAibC1VyOmMRoB6m90wZq8kgPAJt8euTeqGxyoKKZBl7QqRgaqPZf",
+        "width": 3024
+      }
+    ],
+    "place_id": "ChIJofNBO_X_sUARPSCVk02rD4E",
+    "plus_code": {
+      "compound_code": "C4M2+67 Bucharest",
+      "global_code": "8GP8C4M2+67"
+    },
+    "rating": 4.3,
+    "reference": "ChIJofNBO_X_sUARPSCVk02rD4E",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 92,
+    "vicinity": "Strada Doamnei 12, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4319977,
+        "lng": 26.0975665
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.43343387989272,
+          "lng": 26.09870722989272
+        },
+        "southwest": {
+          "lat": 44.43073422010728,
+          "lng": 26.09600757010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Le Bab",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3456,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/114618261155591651754\">A Google User</a>"
+        ],
+        "photo_reference": "AWU5eFgZOWw0NFnzJR6RqEMyIEqfqOh-dE3EmaNvRj89SOAHBt76miFfAKVTLKk-nc-ty7-fTie3E05Vl1Rj5HyO7wQDhuYNO-eOdpR2YFlVuHEJfKp6e5hg2V8RJIklN1SdJ3Ue3ou6VTDmJxwtiR7blGBNVL4Bj0Q3-7NCG8Y7cK3RaEvY",
+        "width": 5184
+      }
+    ],
+    "place_id": "ChIJAVaSder_sUARxQGys3bOKgc",
+    "plus_code": {
+      "compound_code": "C3JX+Q2 Bucharest",
+      "global_code": "8GP8C3JX+Q2"
+    },
+    "price_level": 3,
+    "rating": 4.5,
+    "reference": "ChIJAVaSder_sUARxQGys3bOKgc",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 1494,
+    "vicinity": "Calea Victoriei 12A, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4686548,
+        "lng": 26.1035715
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.47003417989272,
+          "lng": 26.10483447989272
+        },
+        "southwest": {
+          "lat": 44.46733452010728,
+          "lng": 26.10213482010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Bone Restaurant",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 1919,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/106169042667351219393\">A Google User</a>"
+        ],
+        "photo_reference": "AWU5eFiWMu0vyCCiQKMQOW13TQtdFM3vyws0s5bCJsAdO7JkA28kDF_kRZgke6p_8JyHRcYt84NJiohaGqPjRxk7k7lQkTABrGuNEUHnHc9g4BjqTngMWcQeGcXV7YLLcKnPJsbh_mWmvsLtwWyMMpOajsmKmDcQQCf5fuyD5u1Rs7C7VgQu",
+        "width": 3000
+      }
+    ],
+    "place_id": "ChIJJ5fhXbQDskARFXGbjW5YWcU",
+    "plus_code": {
+      "compound_code": "F493+FC Bucharest",
+      "global_code": "8GP8F493+FC"
+    },
+    "rating": 4.6,
+    "reference": "ChIJJ5fhXbQDskARFXGbjW5YWcU",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "meal_delivery",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 301,
+    "vicinity": "Calea Floreasca 198, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.480599,
+        "lng": 26.0858775
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.48191342989272,
+          "lng": 26.08735522989272
+        },
+        "southwest": {
+          "lat": 44.47921377010728,
+          "lng": 26.08465557010728
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Restaurant Adamo",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/111002377260427690594\">eselischi</a>"
+        ],
+        "photo_reference": "AWU5eFgOEfqUX2vek-lY7S8yIgmjMlnJhcyxYgLxEkql_l6UmAPbnir66P4pMBrh98NwIS0ui9v9k0-SXHJWPR4dEruD_F_gY6ulk8dEN6gdS1Ms8S8wODmzz-cacreefIxINRnWZS7i34W7N2gtgPnN49aOPpD4dB4DgZ2iCmIXBmaJnUW9",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJ1y5zTJ8DskAR30ENW4vdjqo",
+    "plus_code": {
+      "compound_code": "F3JP+68 Bucharest",
+      "global_code": "8GP8F3JP+68"
+    },
+    "rating": 4.4,
+    "reference": "ChIJ1y5zTJ8DskAR30ENW4vdjqo",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 342,
+    "vicinity": "Șoseaua Nordului 1 C, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4297202,
+        "lng": 26.1023053
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.43081492989272,
+          "lng": 26.10344032989272
+        },
+        "southwest": {
+          "lat": 44.42811527010728,
+          "lng": 26.10074067010727
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Manuc's Inn",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 1333,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/112103178901151761014\">A Google User</a>"
+        ],
+        "photo_reference": "AWU5eFizqovQ1RQZioc_f5ui5PQdcB_GCiZf7cFiDaPcY8gczNttEOynAIdB_0-9a87eFLfZVi87YrKdTqXXf9Q-BYMD_3HskjeNL79_Fh9jE3iw3xrKB5mi5ylehTrl5nuXkfqbYCFbu3GAWrYU5zRkVu2ZFPf_PcosH7X2-2_bnvvWSvXn",
+        "width": 2000
+      }
+    ],
+    "place_id": "ChIJtS8YJz7_sUAR4v59lajuRNY",
+    "plus_code": {
+      "compound_code": "C4H2+VW Bucharest",
+      "global_code": "8GP8C4H2+VW"
+    },
+    "price_level": 2,
+    "rating": 4.4,
+    "reference": "ChIJtS8YJz7_sUAR4v59lajuRNY",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 17798,
+    "vicinity": "Str. Franceză 62-64, București"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 44.4369252,
+        "lng": 26.0972626
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 44.43835192989273,
+          "lng": 26.09875147989272
+        },
+        "southwest": {
+          "lat": 44.43565227010728,
+          "lng": 26.09605182010727
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Winestone Victoriei 37",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 4032,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/115309148606971974312\">A Google User</a>"
+        ],
+        "photo_reference": "AWU5eFhBCSV_5awMPFfQoDX0ZeVLTW6dB9YUdz0gb87IjPU4bHnQI06QfSmvT9TMq-zARQefGoOAd5Cl2IQpqOHzWKX1tUh8o9ErYj_7Mhe2oO4DaMUSfOMtGJQnQPh4wtPWk17CJ3kFTFpCtpYts7vAr54c0NlDh0REmm0OiHxqoYFILJL7",
+        "width": 3024
+      }
+    ],
+    "place_id": "ChIJa4xkl0b_sUARmt13qwB4i4g",
+    "plus_code": {
+      "compound_code": "C3PW+RV Bucharest",
+      "global_code": "8GP8C3PW+RV"
+    },
+    "rating": 4.6,
+    "reference": "ChIJa4xkl0b_sUARmt13qwB4i4g",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 216,
+    "vicinity": "Calea Victoriei 37B, București"
+  }
+]
