@@ -2,7 +2,10 @@ import { GeocodeResult} from "@googlemaps/google-maps-services-js";
 
 import {client} from './googleClient'
 
-async function getLatLngFromAddress(address: string): Promise<{ lng: number, lat: number }> {
+async function getLatLngFromAddress(address: string): Promise<{ lng: number, lat: number, isCached: boolean }> {
+
+    // todo cache lookup attempt here
+
     const lngLatResponse = await client.geocode(
         {
             params: {
@@ -24,7 +27,8 @@ async function getLatLngFromAddress(address: string): Promise<{ lng: number, lat
 
     return {
         lat: geoCodeData.geometry.location.lat,
-        lng: geoCodeData.geometry.location.lng
+        lng: geoCodeData.geometry.location.lng,
+        isCached: false
     }
 }
 

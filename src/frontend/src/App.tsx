@@ -17,7 +17,7 @@ function App() {
 
     const getAddressAutoComplete = async (value: string) => {
         const res = await axios.get(
-            'http://localhost:3001/places/address/autoComplete',
+            'http://localhost:4000/places/address/autoComplete',
             {
                 params: {
                     autoCompleteInput: value

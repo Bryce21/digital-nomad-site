@@ -4,7 +4,7 @@ import {PlacesNearbyResponse} from "../types/types";
 
 async function getPlacesNearby(inputAddress: string, types: string[]) {
     const res = await axios.get<PlacesNearbyResponse>(
-        'http://localhost:3001/places/nearby',
+        'http://localhost:4000/places/nearby',
         {
             params: {
                 address: inputAddress,
