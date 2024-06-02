@@ -70,11 +70,11 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
                         />
 
                     </Form.Item>
-                    <Form.Item
+                    {/* <Form.Item
                         name={"date"}
                     >
                         <RangePicker />
-                    </Form.Item>
+                    </Form.Item> */}
                     <Form.Item>
                         <Button type="primary" htmlType="submit">
                             Submit

@@ -9,7 +9,7 @@ interface MapWidgetProps {
     location: string
 }
 
-const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || 'AIzaSyAy4ppsKWmV1Ns3wkgBmgc0PcHuU_O4ZFA'
 
 
 export function MapWidget(props: MapWidgetProps) {
