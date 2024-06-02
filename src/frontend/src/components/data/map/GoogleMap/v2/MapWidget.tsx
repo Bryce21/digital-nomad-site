@@ -2,27 +2,27 @@ import { APIProvider } from "@vis.gl/react-google-maps";
 import React from "react";
 import { MapWithData } from "./MapWithData";
 import { Divider } from "antd";
-import {ErrorBoundary} from "../../../../common/ErrorBoundary";
-
+import { ErrorBoundary } from "../../../../common/ErrorBoundary";
 
 interface MapWidgetProps {
-    location: string
+  location: string;
 }
 
-const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || 'AIzaSyAy4ppsKWmV1Ns3wkgBmgc0PcHuU_O4ZFA'
-
+const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "NEED_HERE";
 
 export function MapWidget(props: MapWidgetProps) {
-    return <>
-        <ErrorBoundary>
-            <div style={{ height: '90vh' }}>
-                <APIProvider apiKey={API_KEY}>
-                    <div style={{ height: '90vh' }}>
-                        <MapWithData location={props.location} />
-                    </div>
-                </APIProvider>
+  return (
+    <>
+      <ErrorBoundary>
+        <div style={{ height: "90vh" }}>
+          <APIProvider apiKey={API_KEY}>
+            <div style={{ height: "90vh" }}>
+              <MapWithData location={props.location} />
             </div>
-        </ErrorBoundary>
-        <Divider />
+          </APIProvider>
+        </div>
+      </ErrorBoundary>
+      <Divider />
     </>
+  );
 }
