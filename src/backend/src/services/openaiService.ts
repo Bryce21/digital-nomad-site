@@ -61,8 +61,10 @@ function cleanResponse(aiRes: ChatCompletion): CleanedAiResponse {
   }
 }
 
-async function sendQuery(base: ValidBaseStructure, place: string) {
-  // todo assert that place is not really long
+async function sendQuery(
+  base: ValidBaseStructure,
+  place: string,
+): Promise<CleanedAiResponse> {
   const message = getMessageFromBaseAndPlace(base, place);
   console.log('message', message);
   const cacheLookup = await lookup<any>(message);
@@ -82,7 +84,7 @@ async function sendQuery(base: ValidBaseStructure, place: string) {
   const cleanedResponse: CleanedAiResponse = cleanResponse(aiRes);
   // let caching promise spin off
   set<CleanedAiResponse>(message, cleanedResponse);
-  return cleanedResponse.data;
+  return cleanedResponse;
 }
 
 export { sendQuery, questionBases, ValidBaseStructure };

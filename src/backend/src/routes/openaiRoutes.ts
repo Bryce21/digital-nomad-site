@@ -1,27 +1,27 @@
-import express, {Request} from "express";
-import {sendQuery, questionBases} from '../services/openaiService'
+import express, { NextFunction, Request, Response } from 'express';
+import { sendQuery, questionBases } from '../services/openaiService';
+import { query, validationResult, matchedData } from 'express-validator';
 const openaiRouter = express.Router();
 
-
-
-interface LocationQuery {
-    location: string
-}
-openaiRouter.get('/food', async (req: Request<unknown, unknown, unknown, LocationQuery>, res, next) => {
+openaiRouter.get(
+  '/food',
+  //   todo make env variable for max length here
+  query('location').notEmpty().isString().isLength({ max: 100 }).escape(),
+  async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const {location} = req.query
-        if(!location){
-            throw new Error('location must be defined as a query parameter')
-        }
-        const aiRes = await sendQuery(questionBases.food, location)
-        res.json(aiRes)
+      const result = validationResult(req);
+      if (!result.isEmpty()) {
+        throw new Error(`Validation error: ${JSON.stringify(result.array())}`);
+      }
+      const data = matchedData(req);
+      const { location } = data;
+      const aiRes = await sendQuery(questionBases.food, location);
+      res.json(aiRes);
     } catch (e) {
-        console.error(e)
-        next(e)
+      console.error(e);
+      next(e);
     }
-})
+  },
+);
 
-
-export {
-    openaiRouter
-}
+export { openaiRouter };
