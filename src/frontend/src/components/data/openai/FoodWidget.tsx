@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { List, Typography } from "antd";
+import { List, Tooltip, Typography, Button } from "antd";
 import { ErrorBoundary } from "../../common/ErrorBoundary";
 import {
   getFoodSuggestions,
   CleanedAiResponse,
   ExpectedAIResponseFormat,
 } from "../../../services/aiService";
-
-const data = [
-  "Racing car sprays burning fuel into crowd.",
-  "Japanese princess to wed commoner.",
-  "Australian walks 100km after outback crash.",
-  "Man charged over missing wedding girl.",
-  "Los Angeles battles huge wildfires.",
-];
 
 export interface FoodWidgetProps {
   location: string;
@@ -30,6 +22,7 @@ export function FoodWidget(props: FoodWidgetProps) {
   useEffect(() => {
     const func = async () => {
       try {
+        setLoading(true);
         const res: CleanedAiResponse = await getFoodSuggestions(props.location);
         console.log("res", res);
         setSuggestions(res);
@@ -56,7 +49,19 @@ export function FoodWidget(props: FoodWidgetProps) {
           dataSource={data}
           renderItem={(item) => (
             <List.Item>
-              <Typography.Text mark>{item.name}</Typography.Text>{" "}
+              <Typography.Text color="blue">
+                <a
+                  onClick={() =>
+                    window.open(
+                      `https://www.google.com/search?q=${props.location} + ${item.name}`
+                    )
+                  }
+                >
+                  {item.name}
+                </a>
+              </Typography.Text>
+
+              <br />
               {item.description}
             </List.Item>
           )}
