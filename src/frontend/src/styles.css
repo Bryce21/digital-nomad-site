@@ -1,4 +1,7 @@
-
 .leaflet-container {
-    height: 100vh;
+  height: 100vh;
+}
+
+button.gm-ui-hover-effect {
+  visibility: hidden;
 }

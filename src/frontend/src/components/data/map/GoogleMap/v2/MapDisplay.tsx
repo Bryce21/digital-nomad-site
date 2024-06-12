@@ -8,6 +8,7 @@ import {
 import { LatLng, Place } from "../../../../../types/types";
 import GoogleMapMarker from "./GoogleMapMarker";
 import { CenterMarker } from "./CenterMarker";
+import { DataInPopup } from "./DataInPopup";
 
 interface GoogleMapProps {
   centerAddress: string;
@@ -23,13 +24,7 @@ export function GoogleMap(props: GoogleMapProps) {
   console.log("Google map rendering", props);
 
   function displayPlaceData(data: Place) {
-    return (
-      <div>
-        Name - {data.name}
-        Rating - {data.rating}
-        Total rating - {data.rating}
-      </div>
-    );
+    return <DataInPopup data={data} />;
   }
 
   return (
