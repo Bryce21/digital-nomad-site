@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
-import { sendQuery, questionBases } from '../services/openaiService';
+import * as OpenAiService from '../services/openaiService';
 import { query, validationResult, matchedData } from 'express-validator';
 const openaiRouter = express.Router();
 
@@ -15,7 +15,10 @@ openaiRouter.get(
       }
       const data = matchedData(req);
       const { location } = data;
-      const aiRes = await sendQuery(questionBases.food, location);
+      const aiRes = await OpenAiService.sendQuery(
+        OpenAiService.questionBases.food,
+        location,
+      );
       res.json(aiRes);
     } catch (e) {
       console.error(e);

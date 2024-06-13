@@ -8,6 +8,7 @@ import express, {
 
 import { openaiRouter } from './routes/openaiRoutes';
 import { placesRouter } from './routes/placesRoutes';
+import { connectToDatabase } from './services/database';
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
@@ -26,6 +27,13 @@ app.use('/openai', openaiRouter);
 
 app.use('/places', placesRouter);
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+connectToDatabase()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`[server]: Server is running at http://localhost:${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Error connecting to database');
+    process.exit(1);
+  });

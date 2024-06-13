@@ -55,7 +55,6 @@ function cleanResponse(aiRes: ChatCompletion): CleanedAiResponse {
   } catch (e) {
     console.error('Error cleaning ai response', e);
     return {
-      // todo this unsafe array access isn't great
       data: message,
     } as InvalidSchema;
   }
