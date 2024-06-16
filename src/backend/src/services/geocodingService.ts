@@ -8,8 +8,6 @@ import { Collection, ObjectId } from 'mongodb';
 async function getLatLngFromAddress(
   address: string,
 ): Promise<{ lng: number; lat: number; isCached: boolean }> {
-  // todo cache lookup attempt here
-
   const cacheLookup: LatLong | undefined = await CacheService.get<LatLong>(
     address as CacheService.Address,
     DatabaseService.collections.latLong as Collection,

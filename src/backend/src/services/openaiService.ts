@@ -1,5 +1,4 @@
 import OpenAI from 'openai';
-import { get, set } from './cacheService';
 import {
   AiResponseFormat,
   CleanedAiResponse,
@@ -7,10 +6,15 @@ import {
   FoodResponse,
   InvalidSchema,
   ValidSchema,
-} from '../types/openai';
+} from '../types/models/AiResponse';
 import { Chat } from 'openai/resources';
 import { getRequiredValue } from './configService';
 import ChatCompletion = Chat.ChatCompletion;
+
+import * as CacheService from './cacheService';
+import { collections } from './database';
+import { Collection, ObjectId } from 'mongodb';
+import { CachedData } from '../types/common';
 
 type ValidBaseStructure =
   | 'What are the popular foods of '
@@ -49,27 +53,32 @@ function cleanResponse(aiRes: ChatCompletion): CleanedAiResponse {
         description: v.description,
       };
     });
-    return {
-      data: foodsCleaned,
-    } as ValidSchema;
+    return new ValidSchema(foodsCleaned, new ObjectId());
   } catch (e) {
     console.error('Error cleaning ai response', e);
-    return {
-      data: message,
-    } as InvalidSchema;
+    return new InvalidSchema(message, new ObjectId());
   }
 }
 
 async function sendQuery(
   base: ValidBaseStructure,
   place: string,
-): Promise<CleanedAiResponse> {
+): Promise<CachedData<String | ExpectedAIResponseFormat[]>> {
   const message = getMessageFromBaseAndPlace(base, place);
   console.log('message', message);
-  // const cacheLookup = await lookup<any>(message);
-  // if (cacheLookup) {
-  //   return cacheLookup;
-  // }
+
+  const cacheRes: CleanedAiResponse | undefined =
+    await CacheService.get<CleanedAiResponse>(
+      place,
+      collections.openAiFood as Collection,
+    );
+
+  if (cacheRes) {
+    return {
+      isCached: true,
+      data: cacheRes.data,
+    };
+  }
 
   const aiRes = await openai.chat.completions.create({
     messages: [{ role: 'user', content: message }],
@@ -81,9 +90,14 @@ async function sendQuery(
   console.log('aiRes', JSON.stringify(aiRes, null, 2));
 
   const cleanedResponse: CleanedAiResponse = cleanResponse(aiRes);
+
   // let caching promise spin off
-  // set<CleanedAiResponse>(message, cleanedResponse);
-  return cleanedResponse;
+  CacheService.set<CleanedAiResponse>(place, cleanedResponse);
+
+  return {
+    isCached: false,
+    data: cleanedResponse.data,
+  };
 }
 
 export { sendQuery, questionBases, ValidBaseStructure };

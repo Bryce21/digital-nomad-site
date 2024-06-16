@@ -3,6 +3,7 @@ import * as ConfigService from './configService';
 
 export const collections: {
   latLong?: mongoDB.Collection;
+  openAiFood?: mongoDB.Collection;
 } = {};
 
 export async function connectToDatabase() {
@@ -18,7 +19,11 @@ export async function connectToDatabase() {
     ConfigService.getRequiredValue('LAT_LONG_COLLECTION'),
   );
 
+  //   todo make env variable for collection name
+  const openAiFood: mongoDB.Collection = db.collection('openAiFood');
+
   collections.latLong = latLongCollection;
+  collections.openAiFood = openAiFood;
 
   console.log(
     `Successfully connected to database: ${db.databaseName} and collections`,

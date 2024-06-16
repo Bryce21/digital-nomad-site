@@ -8,6 +8,7 @@ export interface ExpectedAIResponseFormat {
 
 export interface CleanedAiResponse {
   data: string | ExpectedAIResponseFormat[];
+  isCached: boolean;
 }
 
 async function getFoodSuggestions(

@@ -24,6 +24,7 @@ async function get<T extends Model>(
     console.error('Failed to lookup from cache.', {
       key,
       collectionName: collection.namespace,
+      err,
     });
     return undefined;
   }
@@ -47,7 +48,7 @@ async function set<T extends Model>(key: CacheKey, value: T): Promise<void> {
       },
     );
   } catch (err) {
-    console.error(`Failed to set cache. Key: ${key}, value: ${value}`);
+    console.error(`Failed to set cache. Key: ${key}, value: ${value}`, { err });
   }
 }
 
