@@ -1,5 +1,4 @@
 import * as mongoDB from 'mongodb';
-import * as dotenv from 'dotenv';
 import * as ConfigService from './configService';
 
 export const collections: {
@@ -7,8 +6,6 @@ export const collections: {
 } = {};
 
 export async function connectToDatabase() {
-  dotenv.config();
-
   const client: mongoDB.MongoClient = new mongoDB.MongoClient(
     ConfigService.getRequiredValue('DB_CONN_STRING'),
   );

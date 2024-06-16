@@ -1,11 +1,26 @@
 import { GeocodeResult } from '@googlemaps/google-maps-services-js';
-
+import * as CacheService from './cacheService';
 import { client } from './googleClient';
+import LatLong from '../types/models/latLong';
+import * as DatabaseService from './database';
+import { Collection, ObjectId } from 'mongodb';
 
 async function getLatLngFromAddress(
   address: string,
 ): Promise<{ lng: number; lat: number; isCached: boolean }> {
   // todo cache lookup attempt here
+
+  const cacheLookup: LatLong | undefined = await CacheService.get<LatLong>(
+    address as CacheService.Address,
+    DatabaseService.collections.latLong as Collection,
+  );
+  if (cacheLookup) {
+    return {
+      lat: cacheLookup.lat,
+      lng: cacheLookup.lng,
+      isCached: true,
+    };
+  }
 
   const lngLatResponse = await client.geocode({
     params: {
@@ -19,15 +34,22 @@ async function getLatLngFromAddress(
   }
   const geoCodeData: GeocodeResult | undefined =
     lngLatResponse.data.results.pop();
+
   if (!geoCodeData) {
     throw new Error('Could not geocode - no data returned');
   }
 
-  console.log(JSON.stringify(geoCodeData, null, 2));
+  const data = new LatLong(
+    geoCodeData.geometry.location.lat,
+    geoCodeData.geometry.location.lng,
+    address,
+    new ObjectId(),
+  );
+
+  CacheService.set<LatLong>(address, data);
 
   return {
-    lat: geoCodeData.geometry.location.lat,
-    lng: geoCodeData.geometry.location.lng,
+    ...data,
     isCached: false,
   };
 }

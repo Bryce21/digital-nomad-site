@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { lookup, set } from './cacheService';
+import { get, set } from './cacheService';
 import {
   AiResponseFormat,
   CleanedAiResponse,
@@ -66,10 +66,10 @@ async function sendQuery(
 ): Promise<CleanedAiResponse> {
   const message = getMessageFromBaseAndPlace(base, place);
   console.log('message', message);
-  const cacheLookup = await lookup<any>(message);
-  if (cacheLookup) {
-    return cacheLookup;
-  }
+  // const cacheLookup = await lookup<any>(message);
+  // if (cacheLookup) {
+  //   return cacheLookup;
+  // }
 
   const aiRes = await openai.chat.completions.create({
     messages: [{ role: 'user', content: message }],
@@ -82,7 +82,7 @@ async function sendQuery(
 
   const cleanedResponse: CleanedAiResponse = cleanResponse(aiRes);
   // let caching promise spin off
-  set<CleanedAiResponse>(message, cleanedResponse);
+  // set<CleanedAiResponse>(message, cleanedResponse);
   return cleanedResponse;
 }
 
