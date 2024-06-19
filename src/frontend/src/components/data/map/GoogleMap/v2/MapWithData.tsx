@@ -1,14 +1,14 @@
 import { APIProvider, Map, useMap } from "@vis.gl/react-google-maps";
 import React, { useEffect, useState } from "react";
 import { Col, Row, Select, Tag, TagProps } from "antd";
-import { getPlacesNearby } from "../../../../../services/LocationService";
+import type { SelectProps } from "antd";
+import getPlacesNearby from "../../../../../services/LocationService";
 import {
   LatLng,
   Place,
   PlacesNearbyResponse,
 } from "../../../../../types/types";
 import { GoogleMap } from "./MapDisplay";
-import type { SelectProps } from "antd";
 import { SelectComponent } from "../../../../inputs/SelectPlaces/SelectComponent";
 
 interface MapWithDataProps {
@@ -147,15 +147,13 @@ export function MapWithData(props: MapWithDataProps) {
 
   function renderSelect() {
     return (
-      <>
-        <SelectComponent
-          options={availablePlaceTypes.map((v) => ({
-            label: v,
-            value: v,
-          }))}
-          onChange={(v) => setTypes(v)}
-        />
-      </>
+      <SelectComponent
+        options={availablePlaceTypes.map((v) => ({
+          label: v,
+          value: v,
+        }))}
+        onChange={(v) => setTypes(v)}
+      />
     );
   }
 
@@ -177,15 +175,13 @@ export function MapWithData(props: MapWithDataProps) {
 
   // todo move the select thing into the map as a map control component
   return (
-    <>
-      <div className={"mapDisplayDiv"} style={{ height: "90vh" }}>
-        <Row>
-          <Col span={4}>{renderSelect()}</Col>
-        </Row>
-        <Row>
-          <Col span={24}>{renderMap()}</Col>
-        </Row>
-      </div>
-    </>
+    <div className="mapDisplayDiv" style={{ height: "90vh" }}>
+      <Row>
+        <Col span={4}>{renderSelect()}</Col>
+      </Row>
+      <Row>
+        <Col span={24}>{renderMap()}</Col>
+      </Row>
+    </div>
   );
 }
