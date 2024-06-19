@@ -16,6 +16,7 @@ export function FoodWidget(props: FoodWidgetProps) {
 
   const [suggestions, setSuggestions] = useState<CleanedAiResponse>({
     data: [],
+    isCached: false,
   });
 
   //   todo need memo

@@ -1,5 +1,4 @@
-import axios from "axios";
-import { PlacesNearbyResponse } from "../types/types";
+import axios from 'axios';
 
 export interface ExpectedAIResponseFormat {
   name: string;
@@ -12,15 +11,15 @@ export interface CleanedAiResponse {
 }
 
 async function getFoodSuggestions(
-  inputAddress: string
+  inputAddress: string,
 ): Promise<CleanedAiResponse> {
   const res = await axios.get<CleanedAiResponse>(
-    "http://localhost:4000/openai/food",
+    'http://localhost:4000/openai/food',
     {
       params: {
         location: inputAddress,
       },
-    }
+    },
   );
   return res.data;
 }
