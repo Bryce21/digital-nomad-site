@@ -1,8 +1,11 @@
-import { Col, Collapse, Row } from 'antd';
-import React from 'react';
-import { FoodWidget } from './FoodWidget';
-import { ThingsToDoWidget } from './ThingsToDoWidget';
-import { Setting } from '../../common/Setting';
+import { Col, Collapse, Row } from "antd";
+import React from "react";
+import { Setting } from "../../common/Setting";
+import { ListDisplay } from "./ListDisplay";
+import {
+  getFoodSuggestions,
+  getThingsToDoSuggestions,
+} from "../../../services/aiService";
 
 export interface OpenAiWidgetProps {
   location?: string;
@@ -16,12 +19,17 @@ export function OpenAiWidget(props: OpenAiWidgetProps) {
         <Col span={12}>
           <Collapse
             size="large"
-            collapsible={!location ? 'disabled' : undefined}
+            collapsible={!location ? "disabled" : undefined}
             items={[
               {
-                key: '1',
-                label: 'Food',
-                children: <FoodWidget location={location as string} />,
+                key: "1",
+                label: "Food",
+                children: (
+                  <ListDisplay
+                    location={location as string}
+                    getData={(location: string) => getFoodSuggestions(location)}
+                  />
+                ),
                 extra: <Setting onClick={() => {}} />,
               },
             ]}
@@ -30,12 +38,19 @@ export function OpenAiWidget(props: OpenAiWidgetProps) {
         <Col span={12}>
           <Collapse
             size="large"
-            collapsible={!location ? 'disabled' : undefined}
+            collapsible={!location ? "disabled" : undefined}
             items={[
               {
-                key: '1',
-                label: 'Things to do',
-                children: <ThingsToDoWidget />,
+                key: "1",
+                label: "Things to do",
+                children: (
+                  <ListDisplay
+                    location={location as string}
+                    getData={(location: string) =>
+                      getThingsToDoSuggestions(location)
+                    }
+                  />
+                ),
                 extra: <Setting onClick={() => {}} />,
               },
             ]}

@@ -27,4 +27,28 @@ openaiRouter.get(
   },
 );
 
+openaiRouter.get(
+  '/toDo',
+  //   todo make env variable for max length here
+  query('location').notEmpty().isString().isLength({ max: 100 }).escape(),
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const result = validationResult(req);
+      if (!result.isEmpty()) {
+        throw new Error(`Validation error: ${JSON.stringify(result.array())}`);
+      }
+      const data = matchedData(req);
+      const { location } = data;
+      const aiRes = await OpenAiService.sendQuery(
+        OpenAiService.questionBases.thingsToDo,
+        location,
+      );
+      res.json(aiRes);
+    } catch (e) {
+      console.error(e);
+      next(e);
+    }
+  },
+);
+
 export { openaiRouter };

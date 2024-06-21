@@ -34,29 +34,32 @@ function getMessageFromBaseAndPlace(base: ValidBaseStructure, place: string) {
     base +
     place +
     '?' +
-    'Json response format: {"foods": [{"name": "", "description": ""}]}. 5 items'
+    'Json response format: {"data": [{"name": "", "description": ""}]}. 5 items'
   );
 }
 
-function cleanResponse(aiRes: ChatCompletion): CleanedAiResponse {
+function cleanResponse(
+  aiRes: ChatCompletion,
+  questionType: 'food' | 'toDo',
+): CleanedAiResponse {
   // if no message at all want to throw error
   const message = <string>aiRes.choices[0].message.content;
   try {
-    const json = JSON.parse(message);
-    if (!json.foods) {
-      throw new Error('Invalid response format: Missing .foods');
+    const res = JSON.parse(message);
+    if (!res.data) {
+      throw new Error('Invalid response format: Missing .data');
     }
-    const foods = json.foods as ExpectedAIResponseFormat[];
-    const foodsCleaned: ExpectedAIResponseFormat[] = foods.map((v) => {
+    const data = res.data as ExpectedAIResponseFormat[];
+    const dataCleaned: ExpectedAIResponseFormat[] = data.map((v) => {
       return {
         name: v.name,
         description: v.description,
       };
     });
-    return new ValidSchema(foodsCleaned, new ObjectId());
+    return new ValidSchema(dataCleaned, questionType, new ObjectId());
   } catch (e) {
     console.error('Error cleaning ai response', e);
-    return new InvalidSchema(message, new ObjectId());
+    return new InvalidSchema(message, questionType, new ObjectId());
   }
 }
 
@@ -67,11 +70,16 @@ async function sendQuery(
   const message = getMessageFromBaseAndPlace(base, place);
   console.log('message', message);
 
+  const questionType = base === questionBases.food ? 'food' : 'toDo';
+  console.log('questionType', questionType);
   const cacheRes: CleanedAiResponse | undefined =
     await CacheService.get<CleanedAiResponse>(
       place,
-      collections.openAiFood as Collection,
+      base === questionBases.food
+        ? (collections.openAiFood as Collection)
+        : (collections.openAiToDo as Collection),
     );
+  console.log('cacheRes', cacheRes);
 
   if (cacheRes) {
     return {
@@ -89,7 +97,7 @@ async function sendQuery(
   });
   console.log('aiRes', JSON.stringify(aiRes, null, 2));
 
-  const cleanedResponse: CleanedAiResponse = cleanResponse(aiRes);
+  const cleanedResponse: CleanedAiResponse = cleanResponse(aiRes, questionType);
 
   // let caching promise spin off
   CacheService.set<CleanedAiResponse>(place, cleanedResponse);

@@ -33,7 +33,11 @@ async function get<T extends Model>(
 async function set<T extends Model>(key: CacheKey, value: T): Promise<void> {
   try {
     const collection = value.getCollection();
-    console.log('setting data in cache', { key, value, collection });
+    console.log('setting data in cache', {
+      key,
+      value,
+      collectionName: collection.namespace,
+    });
     await collection.updateOne(
       {
         key,

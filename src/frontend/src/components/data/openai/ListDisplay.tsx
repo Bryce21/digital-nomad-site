@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import { List, Tooltip, Typography, Button } from "antd";
+import { ErrorBoundary } from "../../common/ErrorBoundary";
 import {
-  List, Tooltip, Typography, Button,
-} from 'antd';
-import { ErrorBoundary } from '../../common/ErrorBoundary';
-import {
-  getFoodSuggestions,
   CleanedAiResponse,
   ExpectedAIResponseFormat,
-} from '../../../services/aiService';
+} from "../../../services/aiService";
 
 export interface FoodWidgetProps {
   location: string;
+  getData: (location: string) => Promise<CleanedAiResponse>;
 }
 
-export function FoodWidget(props: FoodWidgetProps) {
+export function ListDisplay(props: FoodWidgetProps) {
   const [loading, setLoading] = useState<boolean>(false);
 
   const [suggestions, setSuggestions] = useState<CleanedAiResponse>({
@@ -26,8 +24,8 @@ export function FoodWidget(props: FoodWidgetProps) {
     const func = async () => {
       try {
         setLoading(true);
-        const res: CleanedAiResponse = await getFoodSuggestions(props.location);
-        console.log('res', res);
+        const res: CleanedAiResponse = await props.getData(props.location);
+        console.log("res", res);
         setSuggestions(res);
       } catch (err) {
         console.error(err);
@@ -40,7 +38,7 @@ export function FoodWidget(props: FoodWidgetProps) {
 
   function renderSuggestionList() {
     const data = suggestions.data as ExpectedAIResponseFormat[];
-    console.log('rendering list', data);
+    console.log("rendering list", data);
 
     return (
       <List
@@ -53,9 +51,11 @@ export function FoodWidget(props: FoodWidgetProps) {
           <List.Item>
             <Typography.Text color="blue">
               <a
-                onClick={() => window.open(
-                  `https://www.google.com/search?q=${props.location} + ${item.name}`,
-                )}
+                onClick={() =>
+                  window.open(
+                    `https://www.google.com/search?q=${props.location} + ${item.name}`
+                  )
+                }
               >
                 {item.name}
               </a>
