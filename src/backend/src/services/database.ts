@@ -5,6 +5,7 @@ export const collections: {
   latLong?: mongoDB.Collection;
   openAiFood?: mongoDB.Collection;
   openAiToDo?: mongoDB.Collection;
+  suggestions?: mongoDB.Collection;
 } = {};
 
 export async function connectToDatabase() {
@@ -24,9 +25,12 @@ export async function connectToDatabase() {
   const openAiFood: mongoDB.Collection = db.collection('openAiFood');
   const openAiToDo: mongoDB.Collection = db.collection('openAiToDo');
 
+  const suggestions: mongoDB.Collection = db.collection('suggestions');
+
   collections.latLong = latLongCollection;
   collections.openAiFood = openAiFood;
   collections.openAiToDo = openAiToDo;
+  collections.suggestions = suggestions;
 
   console.log(
     `Successfully connected to database: ${db.databaseName} and collections`,

@@ -1,16 +1,12 @@
-import express, {
-  Express,
-  NextFunction,
-  Request,
-  RequestHandler,
-  Response,
-} from 'express';
+import express, { Express } from 'express';
 
 import { openaiRouter } from './routes/openaiRoutes';
 import { placesRouter } from './routes/placesRoutes';
 import { connectToDatabase } from './services/database';
+import { suggestionRouter } from './routes/suggestion';
 
 const app: Express = express();
+app.use(express.json());
 const port = process.env.PORT || 3000;
 
 // set cors - todo restrict this more eventually
@@ -27,12 +23,17 @@ app.use('/openai', openaiRouter);
 
 app.use('/places', placesRouter);
 
+app.use('/suggestions', suggestionRouter);
+
+const startApiServer = () => {
+  app.listen(port, () => {
+    console.log(`[server]: Server is running at http://localhost:${port}`);
+  });
+};
+
 connectToDatabase()
-  .then(() => {
-    app.listen(port, () => {
-      console.log(`[server]: Server is running at http://localhost:${port}`);
-    });
-  })
+  // todo setup mongo indexes
+  .then(() => startApiServer())
   .catch((err) => {
     console.error('Error connecting to database');
     process.exit(1);

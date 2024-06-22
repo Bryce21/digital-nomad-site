@@ -7,6 +7,12 @@ export type Address = String;
 
 export type CacheKey = Address;
 
+/*
+  Using mongo as a "cache"
+  Using ttl index
+  But some collections will have a very large ttl - a year type of thing
+*/
+
 async function get<T extends Model>(
   key: CacheKey,
   collection: Collection,
@@ -33,11 +39,6 @@ async function get<T extends Model>(
 async function set<T extends Model>(key: CacheKey, value: T): Promise<void> {
   try {
     const collection = value.getCollection();
-    console.log('setting data in cache', {
-      key,
-      value,
-      collectionName: collection.namespace,
-    });
     await collection.updateOne(
       {
         key,
