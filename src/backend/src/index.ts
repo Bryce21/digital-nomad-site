@@ -4,6 +4,7 @@ import { openaiRouter } from './routes/openaiRoutes';
 import { placesRouter } from './routes/placesRoutes';
 import { connectToDatabase } from './services/database';
 import { suggestionRouter } from './routes/suggestion';
+import Logger from './services/logger';
 
 const app: Express = express();
 app.use(express.json());
@@ -27,6 +28,7 @@ app.use('/suggestions', suggestionRouter);
 
 const startApiServer = () => {
   app.listen(port, () => {
+    Logger.info(`[server]: Server is running at http://localhost:${port}`);
     console.log(`[server]: Server is running at http://localhost:${port}`);
   });
 };
@@ -35,6 +37,6 @@ connectToDatabase()
   // todo setup mongo indexes
   .then(() => startApiServer())
   .catch((err) => {
-    console.error('Error connecting to database');
+    Logger.error(`Error connecting to database: ${err}`);
     process.exit(1);
   });
