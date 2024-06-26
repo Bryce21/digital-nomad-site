@@ -8,6 +8,45 @@ export const collections: {
   suggestions?: mongoDB.Collection;
 } = {};
 
+export async function initializeDB() {
+  // todo do better way to ensure collections are all ready initialized
+  if (collections.openAiFood) {
+    await collections.openAiFood.createIndex(
+      { createdAt: 1 },
+      {
+        expireAfterSeconds: process.env.aiFoodTTl
+          ? parseInt(process.env.aiFoodTTl)
+          : 3600,
+      },
+    );
+
+    await collections.openAiFood.createIndex({ key: 1 });
+  }
+
+  if (collections.openAiToDo) {
+    await collections.openAiToDo.createIndex(
+      { createdAt: 1 },
+      {
+        expireAfterSeconds: process.env.aiToDoTTL
+          ? parseInt(process.env.aiToDoTTL)
+          : 3600,
+      },
+    );
+    await collections.openAiToDo.createIndex({ key: 1 });
+  }
+
+  if (collections.suggestions) {
+    await collections.suggestions.createIndex(
+      { createdAt: 1 },
+      {
+        expireAfterSeconds: process.env.suggestionsTTL
+          ? parseInt(process.env.suggestionsTTL)
+          : 36000,
+      },
+    );
+  }
+}
+
 export async function connectToDatabase() {
   const client: mongoDB.MongoClient = new mongoDB.MongoClient(
     ConfigService.getRequiredValue('DB_CONN_STRING'),

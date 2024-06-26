@@ -46,6 +46,7 @@ async function set<T extends Model>(key: CacheKey, value: T): Promise<void> {
       {
         $set: {
           ...value,
+          createdAt: new Date().toISOString(),
         },
       },
       {

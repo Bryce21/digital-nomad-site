@@ -2,7 +2,7 @@ import express, { Express } from 'express';
 
 import { openaiRouter } from './routes/openaiRoutes';
 import { placesRouter } from './routes/placesRoutes';
-import { connectToDatabase } from './services/database';
+import { connectToDatabase, initializeDB } from './services/database';
 import { suggestionRouter } from './routes/suggestion';
 import Logger from './services/logger';
 
@@ -34,7 +34,7 @@ const startApiServer = () => {
 };
 
 connectToDatabase()
-  // todo setup mongo indexes
+  .then(() => initializeDB())
   .then(() => startApiServer())
   .catch((err) => {
     Logger.error(`Error connecting to database: ${err}`);
