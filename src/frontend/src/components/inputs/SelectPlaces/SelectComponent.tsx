@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Select } from 'antd';
 import { tagRender } from './TagRender';
 
 interface SelectProps {
-    options: {label: string, value: string}[]
-    maxCount ?: number
-    onChange: (values: string[]) => void
+  options: { label: string; value: string }[];
+  maxCount?: number;
+  onChange: (values: string[]) => void;
 }
 
 export function SelectComponent(props: SelectProps) {
@@ -26,3 +26,5 @@ export function SelectComponent(props: SelectProps) {
     />
   );
 }
+
+export default SelectComponent;

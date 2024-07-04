@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  backend:
+    ports:
+      - 4000:4000
+    build:
+      context: ./src/backend
+      target: build
+    environment:
+      PORT: 4000
+      GOOGLE_API_KEY: ""
+      OPENAI_API_KEY: ""
+      OPENAPI_MODEL: gpt-3.5-turbo
+      DB_CONN_STRING: ""
+      DB_NAME: "digitalNomadSite"
+      LAT_LONG_COLLECTION: "latLong"
+    command: npm run start
+  frontend:
+    ports:
+      - 3000:80
+    build:
+      context: ./src/frontend
+      target: frontend
+    depends_on:
+      - backend

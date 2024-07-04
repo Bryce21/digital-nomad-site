@@ -1,9 +1,20 @@
+import React from 'react';
 import { LatLng } from '../../../../../types/types';
 import GoogleMapMarker from './GoogleMapMarker';
 
 interface CenterMarkerProps {
-    latLong: LatLng,
-    centerAddress: string
+  latLong: LatLng;
+  // eslint-disable-next-line
+  centerAddress: string;
+}
+
+function renderPopup(t: CenterMarkerProps) {
+  return (
+    <div>
+      Name -
+      {t.centerAddress}
+    </div>
+  );
 }
 
 export function CenterMarker(props: CenterMarkerProps) {
@@ -13,15 +24,9 @@ export function CenterMarker(props: CenterMarkerProps) {
       long={props.latLong.lng}
       iconColor="red"
       data={props}
-      popupData={
-            (t: CenterMarkerProps) => (
-              <div>
-                Name -
-                {' '}
-                {t.centerAddress}
-              </div>
-            )
-        }
+      popupData={() => renderPopup(props)}
     />
   );
 }
+
+export default CenterMarker;

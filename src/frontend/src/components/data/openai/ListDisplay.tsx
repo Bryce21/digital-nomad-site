@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { List, Tooltip, Typography, Button } from "antd";
-import { ErrorBoundary } from "../../common/ErrorBoundary";
+import React, { useEffect, useState } from 'react';
+import { List, Typography } from 'antd';
+import { ErrorBoundary } from '../../common/ErrorBoundary';
 import {
   CleanedAiResponse,
   ExpectedAIResponseFormat,
-} from "../../../services/aiService";
+} from '../../../services/aiService';
 
 export interface FoodWidgetProps {
   location: string;
@@ -25,7 +25,7 @@ export function ListDisplay(props: FoodWidgetProps) {
       try {
         setLoading(true);
         const res: CleanedAiResponse = await props.getData(props.location);
-        console.log("res", res);
+        console.log('res', res);
         setSuggestions(res);
       } catch (err) {
         console.error(err);
@@ -38,7 +38,7 @@ export function ListDisplay(props: FoodWidgetProps) {
 
   function renderSuggestionList() {
     const data = suggestions.data as ExpectedAIResponseFormat[];
-    console.log("rendering list", data);
+    console.log('rendering list', data);
 
     return (
       <List
@@ -50,12 +50,11 @@ export function ListDisplay(props: FoodWidgetProps) {
         renderItem={(item) => (
           <List.Item>
             <Typography.Text color="blue">
+              {/* eslint-disable-next-line */}
               <a
-                onClick={() =>
-                  window.open(
-                    `https://www.google.com/search?q=${props.location} + ${item.name}`
-                  )
-                }
+                onClick={() => window.open(
+                  `https://www.google.com/search?q=${props.location} + ${item.name}`,
+                )}
               >
                 {item.name}
               </a>

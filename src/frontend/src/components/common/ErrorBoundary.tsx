@@ -1,10 +1,14 @@
-import { Component } from 'react';
+/*eslint-disable */
+import React, { Component } from "react";
 
 // From - https://www.developerway.com/posts/how-to-handle-errors-in-react
+// eslint-disable-next-line
 export class ErrorBoundary extends Component<any, any> {
-  constructor(props) {
+  // eslint-disable-next-line
+  constructor(props: unknown) {
     super(props);
     // initialize the error state
+    // eslint-disable-next-line
     this.state = { hasError: false, error: Error };
   }
 
@@ -14,7 +18,8 @@ export class ErrorBoundary extends Component<any, any> {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error, errorInfo) {
+  // eslint-disable-next-line
+  componentDidCatch(error: Error, errorInfo: unknown) {
     // send error to somewhere here
     console.error(error);
     console.log(errorInfo);
@@ -30,3 +35,5 @@ export class ErrorBoundary extends Component<any, any> {
     return this.props.children;
   }
 }
+
+export default ErrorBoundary;

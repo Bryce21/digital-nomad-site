@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
-import {
-  AdvancedMarker,
-  InfoWindow,
-  Marker,
-  Pin,
-  useAdvancedMarkerRef,
-  useMarkerRef,
-} from '@vis.gl/react-google-maps';
+import { InfoWindow, Marker, useMarkerRef } from '@vis.gl/react-google-maps';
 
 interface GoogleMapMarkerProps<T> {
   lat: number;
   long: number;
   iconColor: string;
   data: T;
-  popupData: (x: T) => any;
+  popupData: (x: T) => JSX.Element;
 }
 
 export default function GoogleMapMarker<T>(props: GoogleMapMarkerProps<T>) {

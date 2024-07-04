@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './styles.css';
-import { SettingOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import {
-  Col, Collapse, Divider, Flex, Layout, Row, Spin,
+  Col, Collapse, Flex, Layout, Row,
 } from 'antd';
 import { Content, Header } from 'antd/es/layout/layout';
 import { MapWidget } from './components/data/map/GoogleMap/v2/MapWidget';
@@ -14,9 +13,10 @@ import { Setting } from './components/common/Setting';
 function App() {
   const [location, setLocation] = useState<string | undefined>();
 
-  const [fromDate, setFromDate] = useState<Date | undefined>();
-  const [toDate, setToDate] = useState<Date | undefined>();
+  // const [fromDate, setFromDate] = useState<Date | undefined>();
+  // const [toDate, setToDate] = useState<Date | undefined>();
 
+  // todo move this to service
   const getAddressAutoComplete = async (value: string) => {
     const res = await axios.get(
       'http://localhost:4000/places/address/autoComplete',
@@ -26,6 +26,7 @@ function App() {
         },
       },
     );
+    // eslint-disable-next-line
     return res.data.map((data: any) => data.description);
   };
 

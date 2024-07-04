@@ -1,6 +1,5 @@
 import React from 'react';
 import { Descriptions } from 'antd';
-import type { DescriptionsProps } from 'antd';
 import { Place } from '../../../../../types/types';
 
 export interface DataInPopupProps {
@@ -13,11 +12,15 @@ export function DataInPopup(props: DataInPopupProps) {
     <span>
       <Descriptions
         size="small"
-        //   title="title"
         layout="horizontal"
         bordered
         column={{
-          xs: 24, sm: 24, md: 24, lg: 24, xl: 24, xxl: 24,
+          xs: 24,
+          sm: 24,
+          md: 24,
+          lg: 24,
+          xl: 24,
+          xxl: 24,
         }}
         items={[
           {

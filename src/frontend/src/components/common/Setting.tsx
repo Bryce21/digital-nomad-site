@@ -2,7 +2,7 @@ import { SettingOutlined } from '@ant-design/icons';
 import React from 'react';
 
 interface SettingProps {
-    onClick: (MouseEvent) => void
+  onClick: (x: React.MouseEvent) => void;
 }
 
 export function Setting(props: SettingProps) {
@@ -17,3 +17,5 @@ export function Setting(props: SettingProps) {
     />
   );
 }
+
+export default Setting;

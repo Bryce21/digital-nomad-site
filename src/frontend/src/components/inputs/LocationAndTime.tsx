@@ -1,18 +1,17 @@
 import {
-  AutoComplete, Button, Col, DatePicker, Form, Input, Row,
+  AutoComplete, Button, Col, Form, Row,
 } from 'antd';
-import { useEffect, useState } from 'react';
 
-const { RangePicker } = DatePicker;
+import React, { useEffect, useState } from 'react';
 
 interface OnFinishData {
-    location: string
+  location: string;
 }
 
 interface LocationAndTimeProps {
-    // todo add date here
-    onFinish: (data: OnFinishData) => void
-    onSearch: (searchTerm: string) => Promise<string[]>
+  // todo add date here
+  onFinish: (_: OnFinishData) => void;
+  onSearch: (_: string) => Promise<string[]>;
 }
 export default function LocationAndTime(props: LocationAndTimeProps) {
   const [form] = Form.useForm();
@@ -22,18 +21,15 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
   useEffect(() => {
     if (location) {
       // using timeout to debounce
-      const newOptionsTimeout = setTimeout(
-        () => {
-          console.log('set timeout running', location);
-          props.onSearch(location).then((searchOptions: string[]) => {
-            setOptions(searchOptions);
-          });
-        },
-        200,
-      );
+      const newOptionsTimeout = setTimeout(() => {
+        props.onSearch(location).then((searchOptions: string[]) => {
+          setOptions(searchOptions);
+        });
+      }, 200);
 
       return () => clearTimeout(newOptionsTimeout);
     }
+    return undefined;
   }, [location]);
 
   return (
@@ -43,16 +39,12 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
           form={form}
           style={{ maxWidth: 'none' }}
           layout="inline"
-          onFinish={
-                        (values) => {
-                          console.log('values', values);
-                          props.onFinish(
-                            {
-                              location: values.location,
-                            },
-                          );
-                        }
-                    }
+          onFinish={(values) => {
+            console.log('values', values);
+            props.onFinish({
+              location: values.location,
+            });
+          }}
         >
           <Form.Item
             rules={[{ required: true, message: 'Please input a location' }]}
@@ -61,21 +53,16 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
             <AutoComplete
               value={location}
               onChange={(e: string) => {
-                console.log('onChange', e);
                 setLocation(e);
               }}
               options={options.slice(0, 5).map((o) => ({ value: o }))}
               style={{ width: 200 }}
-              onSelect={(data) => { console.log('on select', data); setLocation(data); }}
+              onSelect={(data) => {
+                setLocation(data);
+              }}
               placeholder="Location"
             />
-
           </Form.Item>
-          {/* <Form.Item
-                        name={"date"}
-                    >
-                        <RangePicker />
-                    </Form.Item> */}
           <Form.Item>
             <Button type="primary" htmlType="submit">
               Submit

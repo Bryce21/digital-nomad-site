@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  AdvancedMarker,
-  APIProvider,
-  Map,
-  useMap,
-} from '@vis.gl/react-google-maps';
+import { Map } from '@vis.gl/react-google-maps';
 import { LatLng, Place } from '../../../../../types/types';
 import GoogleMapMarker from './GoogleMapMarker';
 import { CenterMarker } from './CenterMarker';
@@ -45,11 +40,11 @@ export function GoogleMap(props: GoogleMapProps) {
             <GoogleMapMarker<Place>
               lat={place.lat}
               long={place.long}
-                // todo need to set different colors depending on the type
-                // but needs to line up with antd multi select component
+              // todo need to set different colors depending on the type
+              // but needs to line up with antd multi select component
               iconColor="yellow"
               data={place}
-              popupData={displayPlaceData}
+              popupData={(d: Place) => displayPlaceData(d)}
             />
           )),
         ]}
@@ -57,3 +52,5 @@ export function GoogleMap(props: GoogleMapProps) {
     </div>
   );
 }
+
+export default GoogleMap;
