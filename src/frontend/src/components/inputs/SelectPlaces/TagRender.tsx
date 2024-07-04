@@ -1,16 +1,15 @@
-import { Tag } from "antd";
-import type { SelectProps } from "antd";
-import React from "react";
+import { Tag } from 'antd';
+import React from 'react';
+import type { CustomTagProps } from 'rc-select/lib/BaseSelect';
 
-type TagRender = SelectProps["tagRender"];
-import type { CustomTagProps } from "rc-select/lib/BaseSelect";
-
-export const TagRender = (props: {
+export function TagRender(props: {
   defaultProps: CustomTagProps;
   getColor: (x: string) => string;
-}) => {
+}) {
   const { defaultProps, getColor } = props;
-  const { label, closable, value, onClose } = defaultProps;
+  const {
+    label, closable, value, onClose,
+  } = defaultProps;
   const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
     event.preventDefault();
     event.stopPropagation();
@@ -28,6 +27,6 @@ export const TagRender = (props: {
       {label}
     </Tag>
   );
-};
+}
 
 export default TagRender;

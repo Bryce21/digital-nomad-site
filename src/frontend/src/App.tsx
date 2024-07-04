@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import './styles.css';
 import axios from 'axios';
-import {
-  Col, Collapse, Flex, Layout, Row,
-} from 'antd';
+import { Collapse, Flex, Layout } from 'antd';
 import { Content, Header } from 'antd/es/layout/layout';
 import { MapWidget } from './components/data/map/GoogleMap/v2/MapWidget';
 import LocationAndTime from './components/inputs/LocationAndTime';
@@ -12,9 +10,6 @@ import { Setting } from './components/common/Setting';
 
 function App() {
   const [location, setLocation] = useState<string | undefined>();
-
-  // const [fromDate, setFromDate] = useState<Date | undefined>();
-  // const [toDate, setToDate] = useState<Date | undefined>();
 
   // todo move this to service
   const getAddressAutoComplete = async (value: string) => {
@@ -69,29 +64,7 @@ function App() {
                 },
               ]}
             />
-            <div>Ad goes here</div>
             <OpenAiWidget location={location} />
-            <div>Ad goes here</div>
-            <Row>
-              <Col span={24}>
-                <Collapse
-                  size="large"
-                  collapsible={!location ? 'disabled' : undefined}
-                  items={[
-                    {
-                      key: '1',
-                      label: 'Map',
-                      children: location ? (
-                        <div style={{ height: '100vh' }}>
-                          <MapWidget location={location} />
-                        </div>
-                      ) : undefined,
-                      extra: <Setting onClick={() => {}} />,
-                    },
-                  ]}
-                />
-              </Col>
-            </Row>
           </Content>
         </Layout>
       </Flex>
