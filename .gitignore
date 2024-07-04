@@ -8,3 +8,6 @@ digital-nomad-site.iml
 src/backend/.env
 src/frontend/.env
 /.vscode/*
+
+src/backend/logs
+docker-compose.dev.yml
