@@ -1,8 +1,11 @@
-import {
-  AutoComplete, Button, Col, Form, Row,
-} from 'antd';
+import { AutoComplete, Button, Col, Form, Row, Modal } from "antd";
 
-import React, { useEffect, useState } from 'react';
+import {
+  InfoCircleOutlined,
+  InfoCircleFilled,
+  InfoCircleTwoTone,
+} from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
 
 interface OnFinishData {
   location: string;
@@ -15,8 +18,9 @@ interface LocationAndTimeProps {
 }
 export default function LocationAndTime(props: LocationAndTimeProps) {
   const [form] = Form.useForm();
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState("");
   const [options, setOptions] = useState<string[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     if (location) {
@@ -33,21 +37,25 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
   }, [location]);
 
   return (
-    <Row style={{ float: 'right', padding: '15px 0' }}>
+    <Row style={{ float: "right", padding: "5px 0" }}>
+      <InfoCircleTwoTone
+        style={{ fontSize: "150%", marginRight: "5px" }}
+        onClick={() => setModalOpen(true)}
+      />
       <Col>
         <Form
           form={form}
-          style={{ maxWidth: 'none' }}
+          style={{ maxWidth: "none" }}
           layout="inline"
           onFinish={(values) => {
-            console.log('values', values);
+            console.log("values", values);
             props.onFinish({
               location: values.location,
             });
           }}
         >
           <Form.Item
-            rules={[{ required: true, message: 'Please input a location' }]}
+            rules={[{ required: true, message: "Please input a location" }]}
             name="location"
           >
             <AutoComplete
@@ -56,7 +64,7 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
                 setLocation(e);
               }}
               options={options.slice(0, 5).map((o) => ({ value: o }))}
-              style={{ width: 200 }}
+              style={{ width: 300 }}
               onSelect={(data) => {
                 setLocation(data);
               }}
@@ -64,12 +72,34 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{ marginLeft: "-10px" }}
+            >
               Submit
             </Button>
           </Form.Item>
         </Form>
       </Col>
+
+      {modalOpen && (
+        <Modal
+          open={true}
+          footer={null}
+          onOk={() => setModalOpen(false)}
+          onCancel={() => setModalOpen(false)}
+        >
+          <p>
+            This site helps you explore around an area for cool things to do.
+          </p>
+          <p>
+            But in order to find cool things it needs to know the address to
+            look around.
+          </p>
+          <p>Insert an address (or city) into the search bar to get started.</p>
+        </Modal>
+      )}
     </Row>
   );
 }

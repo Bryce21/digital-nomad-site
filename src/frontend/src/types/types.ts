@@ -5,7 +5,6 @@ export interface Place {
   rating: number | undefined;
   types: string[] | undefined;
   totalRatings: number | undefined;
-  website: string | undefined;
   hours?: {
     open_now: boolean;
     weekday_text: string[];
