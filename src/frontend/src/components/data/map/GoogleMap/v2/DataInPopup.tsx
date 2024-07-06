@@ -1,6 +1,6 @@
-import React from "react";
-import { Descriptions } from "antd";
-import { Place } from "../../../../../types/types";
+import React from 'react';
+import { Descriptions } from 'antd';
+import { Place } from '../../../../../types/types';
 
 export interface DataInPopupProps {
   data: Place;
@@ -24,26 +24,26 @@ export function DataInPopup(props: DataInPopupProps) {
         }}
         items={[
           {
-            key: "1",
-            label: "Name",
+            key: '1',
+            label: 'Name',
             children: data.name,
             span: 24,
           },
           {
-            key: "2",
-            label: "Type",
+            key: '2',
+            label: 'Type',
             children: data.fromType.toLocaleUpperCase(),
             span: 24,
           },
           {
-            key: "3",
-            label: "Rating",
+            key: '3',
+            label: 'Rating',
             children: data.rating,
             span: 24,
           },
           {
-            key: "4",
-            label: "Total rating",
+            key: '4',
+            label: 'Total rating',
             children: data.totalRatings,
             span: 24,
           },

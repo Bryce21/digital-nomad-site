@@ -1,11 +1,9 @@
-import { AutoComplete, Button, Col, Form, Row, Modal } from "antd";
-
 import {
-  InfoCircleOutlined,
-  InfoCircleFilled,
-  InfoCircleTwoTone,
-} from "@ant-design/icons";
-import React, { useEffect, useState } from "react";
+  AutoComplete, Button, Col, Form, Row, Modal,
+} from 'antd';
+
+import { InfoCircleTwoTone } from '@ant-design/icons';
+import React, { useEffect, useState } from 'react';
 
 interface OnFinishData {
   location: string;
@@ -18,7 +16,7 @@ interface LocationAndTimeProps {
 }
 export default function LocationAndTime(props: LocationAndTimeProps) {
   const [form] = Form.useForm();
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState('');
   const [options, setOptions] = useState<string[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -37,25 +35,25 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
   }, [location]);
 
   return (
-    <Row style={{ float: "right", padding: "5px 0" }}>
+    <Row style={{ float: 'right', padding: '5px 0' }}>
       <InfoCircleTwoTone
-        style={{ fontSize: "150%", marginRight: "5px" }}
+        style={{ fontSize: '150%', marginRight: '5px' }}
         onClick={() => setModalOpen(true)}
       />
       <Col>
         <Form
           form={form}
-          style={{ maxWidth: "none" }}
+          style={{ maxWidth: 'none' }}
           layout="inline"
           onFinish={(values) => {
-            console.log("values", values);
+            console.log('values', values);
             props.onFinish({
               location: values.location,
             });
           }}
         >
           <Form.Item
-            rules={[{ required: true, message: "Please input a location" }]}
+            rules={[{ required: true, message: 'Please input a location' }]}
             name="location"
           >
             <AutoComplete
@@ -75,7 +73,7 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
             <Button
               type="primary"
               htmlType="submit"
-              style={{ marginLeft: "-10px" }}
+              style={{ marginLeft: '-10px' }}
             >
               Submit
             </Button>
@@ -85,7 +83,7 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
 
       {modalOpen && (
         <Modal
-          open={true}
+          open
           footer={null}
           onOk={() => setModalOpen(false)}
           onCancel={() => setModalOpen(false)}
