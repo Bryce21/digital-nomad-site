@@ -22,7 +22,6 @@ export default function GoogleMapMarker<T>(props: GoogleMapMarkerProps<T>) {
         position={{ lat, lng: long }}
         onMouseOver={() => setInfoWindowOpen(true)}
         onMouseOut={() => setTimeout(() => setInfoWindowOpen(false), 200)}
-        onClick={() => console.log('clicked', data)}
         ref={markerRef}
         icon={{
           url: `http://maps.google.com/mapfiles/ms/icons/${props.iconColor}-dot.png`,

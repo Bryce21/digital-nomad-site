@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      imagePullSecrets:
+        - name: registrypullsecret
+      containers:
+        - name: backend
+          image: bryce21/digital-nomad-site-backend:latest
+          ports:
+            - containerPort: 4000
+          env:
+            - name: PORT
+              value: "4000"
+            - name: GOOGLE_API_KEY
+              value:
+            - name: OPENAI_API_KEY
+              value:
+            - name: OPENAPI_MODEL
+              value: gpt-3.5-turbo
+            - name: DB_CONN_STRING
+              value: "mongodb://mongo-serivce:27017/digitalNomadSite"
+            - name: DB_NAME
+              value: digitalNomadSite
+            - name: LAT_LONG_COLLECTION
+              value: latLong

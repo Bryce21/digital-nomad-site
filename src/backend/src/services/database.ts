@@ -50,7 +50,11 @@ export async function initializeDB() {
 export async function connectToDatabase() {
   const client: mongoDB.MongoClient = new mongoDB.MongoClient(
     ConfigService.getRequiredValue('DB_CONN_STRING'),
+    {
+      connectTimeoutMS: 10000,
+    },
   );
+  console.log('Connecting to mongo');
 
   await client.connect();
 

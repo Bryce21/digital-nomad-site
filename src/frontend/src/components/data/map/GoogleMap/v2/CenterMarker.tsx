@@ -9,12 +9,7 @@ interface CenterMarkerProps {
 }
 
 function renderPopup(t: CenterMarkerProps) {
-  return (
-    <div>
-      Name -
-      {t.centerAddress}
-    </div>
-  );
+  return <div>{t.centerAddress}</div>;
 }
 
 export function CenterMarker(props: CenterMarkerProps) {
