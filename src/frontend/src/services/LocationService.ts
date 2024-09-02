@@ -7,7 +7,7 @@ export default async function getPlacesNearby(
   types: string[]
 ) {
   const res = await axios.get<PlacesNearbyResponse>(
-    "http://localhost:4000/places/nearby",
+    `http://${process.env.REACT_APP_BACKEND_HOST}/places/nearby`,
     {
       params: {
         address: inputAddress,

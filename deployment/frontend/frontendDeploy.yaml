@@ -12,10 +12,10 @@ spec:
       labels:
         app: frontend
     spec:
+      imagePullSecrets:
+        - name: registrypullsecret
       containers:
         - name: frontend
-          image: bryce21/digital-nomad-site-frontend:latest
+          image: bryce21/digital-nomad-site:digital-nomad-site-frontend-latest
           ports:
             - containerPort: 80
-      imagePullSecrets:
-        - name: myregistrykey

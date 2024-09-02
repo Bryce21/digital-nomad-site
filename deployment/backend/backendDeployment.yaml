@@ -16,7 +16,8 @@ spec:
         - name: registrypullsecret
       containers:
         - name: backend
-          image: bryce21/digital-nomad-site-backend:latest
+          image: bryce21/digital-nomad-site:digital-nomad-site-backend-latest
+          command: ["npm", "run", "start"]
           ports:
             - containerPort: 4000
           env:
@@ -29,7 +30,7 @@ spec:
             - name: OPENAPI_MODEL
               value: gpt-3.5-turbo
             - name: DB_CONN_STRING
-              value: "mongodb://mongo-serivce:27017/digitalNomadSite"
+              value: "mongodb://database-service:27017/digitalNomadSite"
             - name: DB_NAME
               value: digitalNomadSite
             - name: LAT_LONG_COLLECTION
