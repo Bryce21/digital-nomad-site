@@ -23,3 +23,6 @@ services:
       target: frontend
     depends_on:
       - backend
+    environment:
+      - REACT_APP_GOOGLE_MAPS_API_KEY
+      - REACT_APP_BACKEND_HOST

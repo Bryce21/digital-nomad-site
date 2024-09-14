@@ -13,7 +13,7 @@ function App() {
   // todo move this to service
   const getAddressAutoComplete = async (value: string) => {
     const res = await axios.get(
-      'http://localhost:4000/places/address/autoComplete',
+      `http://${process.env.REACT_APP_BACKEND_HOST}/places/address/autoComplete`,
       {
         params: {
           autoCompleteInput: value,
