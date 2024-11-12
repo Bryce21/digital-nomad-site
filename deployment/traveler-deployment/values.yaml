@@ -1,0 +1,52 @@
+# Global settings shared across services
+global:
+  imagePullSecrets: registrypullsecret
+
+frontend:
+  ingress:
+    host: "app.traveler.com"
+  service:
+    type: ClusterIP
+  replicas: 1
+  image:
+    repository: bryce21/digital-nomad-site
+    tag: digital-nomad-site-frontend-latest
+  containerPort: 3000
+
+backend:
+  ingress:
+    host: "api.traveler.com"
+  service:
+    port: 4000
+    type: ClusterIP
+  replicas: 1
+  image:
+    repository: bryce21/digital-nomad-site
+    tag: digital-nomad-site-backend-latest
+  containerPort: 4000
+  env:
+    PORT: "4000"
+    OPENAPI_MODEL: "gpt-3.5-turbo"
+    LAT_LONG_COLLECTION: "latLong"
+  secrets:
+    name: besecret
+    googleApiKey:
+      key: GOOGLE_API_KEY
+    openaiApiKey:
+      key: OPENAI_API_KEY
+    dbConnString:
+      key: DB_CONN_STRING
+    dbName:
+      key: DB_NAME
+
+database:
+  replicas: 1
+  type: ClusterIP
+  image:
+    repository: mongo
+    tag: 4.4
+  containerPort: 27017
+  volumeMount:
+    mountPath: /data/db
+    storageClass: standard
+    size: 10Gi

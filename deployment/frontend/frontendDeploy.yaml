@@ -16,6 +16,8 @@ spec:
         - name: registrypullsecret
       containers:
         - name: frontend
+          # todo prod hide the docker acct
           image: bryce21/digital-nomad-site:digital-nomad-site-frontend-latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80

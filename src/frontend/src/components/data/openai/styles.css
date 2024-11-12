@@ -3,3 +3,27 @@
   min-height: 50vh;
   overflow-y: auto;
 } */
+
+/* .collapse-container {
+  display: flex;
+} */
+
+.collapse-panel {
+  width: 100%;
+  overflow: visible;
+}
+
+.collapse-panel .ant-collapse-content-box {
+  max-height: 50vh; /* Set your desired max height */
+  min-height: 50vh;
+  padding-right: 10px;
+  overflow-y: auto; /* Enable vertical scroll */
+  /* width: 100%;
+  min-width: 100%; */
+  /* padding-right: 10px; */
+  /* Optional padding to avoid content clipping */
+}
+
+/* .collapse-panel:last-child {
+  margin-right: 0;
+} */

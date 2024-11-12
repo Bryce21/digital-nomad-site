@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-database
+  labels:
+    app: database
+spec:
+  replicas: {{ .Values.database.replicas }}
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+        - name: database
+          image: {{ .Values.database.image.repository }}:{{ .Values.database.image.tag }}
+          ports:
+            - containerPort: {{ .Values.database.containerPort }}
+          volumeMounts:
+            - name: database-storage
+              mountPath: {{ .Values.database.volumeMount.mountPath }}
+      volumes:
+        - name: database-storage
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-database-pvc

@@ -54,7 +54,9 @@ export async function connectToDatabase() {
       connectTimeoutMS: 10000,
     },
   );
-  console.log('Connecting to mongo');
+  console.log(
+    `Connecting to mongo: ${ConfigService.getRequiredValue('DB_CONN_STRING')}`,
+  );
 
   await client.connect();
 

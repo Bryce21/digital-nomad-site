@@ -30,6 +30,7 @@ export default function GoogleMapMarker<T>(props: GoogleMapMarkerProps<T>) {
       {infoWindowOpen && (
         <InfoWindow
           anchor={marker}
+          position={{ lat, lng: long }}
           maxWidth={500}
           onCloseClick={() => setInfoWindowOpen(false)}
         >

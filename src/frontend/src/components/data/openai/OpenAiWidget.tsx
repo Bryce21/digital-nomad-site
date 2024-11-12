@@ -12,12 +12,14 @@ export interface OpenAiWidgetProps {
 }
 
 export function OpenAiWidget(props: OpenAiWidgetProps) {
+  console.log('open api widget rendering');
   const { location } = props;
   return (
     <div>
       <Row>
         <Col span={12}>
           <Collapse
+            className="collapse-panel"
             size="large"
             collapsible={!location ? 'disabled' : undefined}
             style={{ maxHeight: '60vh' }}
@@ -39,6 +41,7 @@ export function OpenAiWidget(props: OpenAiWidgetProps) {
         </Col>
         <Col span={12}>
           <Collapse
+            className="collapse-panel"
             size="large"
             collapsible={!location ? 'disabled' : undefined}
             // style={{ maxHeight: "20vh" }}

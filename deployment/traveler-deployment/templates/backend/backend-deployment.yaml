@@ -1,9 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: {{ .Release.Name }}-backend
+  labels:
+    app: backend
 spec:
-  replicas: 1
+  replicas: {{ .Values.backend.replicas }}
   selector:
     matchLabels:
       app: backend
@@ -13,43 +15,37 @@ spec:
         app: backend
     spec:
       imagePullSecrets:
-        - name: registrypullsecret
+        - name: {{ .Values.global.imagePullSecrets }}
       containers:
         - name: backend
-          image: bryce21/digital-nomad-site:digital-nomad-site-backend-latest
+          image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
           command: ["npm", "run", "start"]
           ports:
-            - containerPort: 4000
+            - containerPort: {{ .Values.backend.containerPort }}
           env:
             - name: PORT
-              value: "4000"
+              value: "{{ .Values.backend.env.PORT }}"
             - name: GOOGLE_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: besecret
+                  name: {{ .Values.backend.secrets.name }}
                   key: GOOGLE_API_KEY
             - name: OPENAI_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: besecret
+                  name: {{ .Values.backend.secrets.name }}
                   key: OPENAI_API_KEY
             - name: OPENAPI_MODEL
-              value: gpt-3.5-turbo
+              value: "{{ .Values.backend.env.OPENAPI_MODEL }}"
             - name: DB_CONN_STRING
               valueFrom:
                 secretKeyRef:
-                  name: besecret
+                  name: {{ .Values.backend.secrets.name }}
                   key: DB_CONN_STRING
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
-                  name: besecret
+                  name: {{ .Values.backend.secrets.name }}
                   key: DB_NAME
             - name: LAT_LONG_COLLECTION
-              value: latLong
-          # livenessProbe:
-          #   httpGet:
-          #   path: /healthz
-          #   port: 4000
-          #   initialDelaySeconds: 3
-          #   periodSeconds: 5
+              value: "{{ .Values.backend.env.LAT_LONG_COLLECTION }}"

@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express, { Express, Request } from 'express';
 
 import { openaiRouter } from './routes/openaiRoutes';
 import { placesRouter } from './routes/placesRoutes';
@@ -25,6 +25,10 @@ app.use('/openai', openaiRouter);
 app.use('/places', placesRouter);
 
 app.use('/suggestions', suggestionRouter);
+
+app.use('/healthz', (req, res) => {
+  res.json({ ok: true });
+});
 
 const startApiServer = () => {
   app.listen(port, () => {

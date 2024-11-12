@@ -17,8 +17,6 @@ interface GoogleMapProps {
 }
 
 export function GoogleMap(props: GoogleMapProps) {
-  console.log('Google map rendering', props);
-
   function displayPlaceData(data: Place) {
     return <DataInPopup data={data} />;
   }
