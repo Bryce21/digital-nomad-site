@@ -6,7 +6,14 @@ export const collections: {
   openAiFood?: mongoDB.Collection;
   openAiToDo?: mongoDB.Collection;
   suggestions?: mongoDB.Collection;
+  viatorDestinations?: mongoDB.Collection;
 } = {};
+
+async function safeDropIndex(collection: mongoDB.Collection, name: string) {
+  try {
+    await collection.dropIndex(name);
+  } catch (err) {}
+}
 
 export async function initializeDB() {
   // todo do better way to ensure collections are all ready initialized
@@ -19,7 +26,6 @@ export async function initializeDB() {
           : 3600,
       },
     );
-
     await collections.openAiFood.createIndex({ key: 1 });
   }
 
@@ -36,15 +42,39 @@ export async function initializeDB() {
   }
 
   if (collections.suggestions) {
+    await safeDropIndex(collections.suggestions, 'createdAt_1');
+    await safeDropIndex(collections.suggestions, 'ttlIndex');
     await collections.suggestions.createIndex(
       { createdAt: 1 },
       {
         expireAfterSeconds: process.env.suggestionsTTL
           ? parseInt(process.env.suggestionsTTL)
           : 36000,
+        name: 'ttlIndex',
       },
     );
   }
+
+  if (collections.viatorDestinations) {
+    console.log('error here??');
+    await safeDropIndex(collections.viatorDestinations, 'createdAt_1');
+    await safeDropIndex(collections.viatorDestinations, 'ttlIndex');
+    await collections.viatorDestinations.createIndex(
+      { createdAt: 1 },
+      {
+        expireAfterSeconds: parseInt(
+          ConfigService.getValue('DESTINATIONS_TTL', '604800000'),
+        ),
+        name: 'ttlIndex',
+      },
+    );
+    await safeDropIndex(collections.viatorDestinations, 'geoLocateIndex');
+    await collections.viatorDestinations.createIndex(
+      { center: '2dsphere' },
+      { name: 'geoLocateIndex' },
+    );
+  }
+  console.log('after error');
 }
 
 export async function connectToDatabase() {
@@ -72,10 +102,14 @@ export async function connectToDatabase() {
 
   const suggestions: mongoDB.Collection = db.collection('suggestions');
 
+  const viatorDestinations: mongoDB.Collection =
+    db.collection('viatorDestinations');
+
   collections.latLong = latLongCollection;
   collections.openAiFood = openAiFood;
   collections.openAiToDo = openAiToDo;
   collections.suggestions = suggestions;
+  collections.viatorDestinations = viatorDestinations;
 
   console.log(
     `Successfully connected to database: ${db.databaseName} and collections`,

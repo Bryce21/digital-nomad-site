@@ -52,9 +52,6 @@ export class ValidSchema implements CleanedAiResponse {
     public _id?: ObjectId,
   ) {}
   getCollection: () => Collection<Document> = () => {
-    console.log('valid schema getting collection', {
-      questionType: this.questionType,
-    });
     if (this.questionType === 'food') {
       return collections.openAiFood as Collection;
     }

@@ -9,4 +9,13 @@ function getRequiredValue<T>(key: string): T {
   return value as T;
 }
 
-export { getRequiredValue };
+function getValue(key: string, defaultValue: string) {
+  const value = process.env[key];
+  if (value) {
+    return value;
+  }
+
+  return defaultValue;
+}
+
+export { getRequiredValue, getValue };
