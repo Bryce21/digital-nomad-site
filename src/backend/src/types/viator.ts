@@ -49,6 +49,14 @@ export type Reviews = {
   sources: ReviewSource[];
 };
 
+export type Pricing = {
+  currency: string;
+  summary: {
+    fromPrice?: number;
+    fromPriceBeforeDiscount?: number;
+  };
+};
+
 export type Attraction = {
   productCode: string;
   title: string;
@@ -57,6 +65,7 @@ export type Attraction = {
   reviews: Reviews;
   productUrl: string;
   tags: string[];
+  pricing: Pricing;
 };
 
 export type AttractionSearchResult = {

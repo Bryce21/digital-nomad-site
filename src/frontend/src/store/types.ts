@@ -1,4 +1,5 @@
 import { LatLng, Place } from "../types/types";
+import { ViatorDestination } from "../services/types";
 
 export type Metadata = {
   canConnect: boolean;
@@ -17,9 +18,65 @@ export type Search = {
 export type StoreState = {
   meta: Metadata;
   search?: Search;
+  atractions?: AttractionsState;
 };
 
 export type SetSearchPayload = {
   inputAddress: string;
   latLong: LatLng;
+};
+
+export type ImageVariant = {
+  url: string;
+  height: string;
+  width: string;
+};
+
+export type Image = {
+  imageSource: string;
+  caption: string;
+  isCover: boolean;
+  variants: ImageVariant[];
+};
+
+export type ReviewSource = {
+  provider: string;
+  totalCount: number;
+  averageRating: number;
+};
+
+export type Reviews = {
+  totalReviews: number;
+  combinedAverageRating: number;
+  sources: ReviewSource[];
+};
+
+export type Pricing = {
+  currency: string;
+  summary: {
+    fromPrice?: number;
+    fromPriceBeforeDiscount?: number;
+  };
+};
+
+export type Attraction = {
+  productCode: string;
+  title: string;
+  description: string;
+  images: Image[];
+  reviews: Reviews;
+  productUrl: string;
+  tags: string[];
+  pricing: Pricing;
+};
+
+export type AttractionFilters = {};
+
+export type AttractionsState = {
+  loading: boolean;
+  filters: AttractionFilters;
+  data: Attraction[];
+  totalCount: number;
+  currentPage: number;
+  destination?: ViatorDestination;
 };

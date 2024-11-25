@@ -21,6 +21,7 @@ async function lookupDestination(
 ): Promise<ViatorDestination | null> {
   await ensureDestinationsPopulated();
   //   todo shouldn't be accessing collection here, should go through cache service
+
   const foundDestination =
     await DatabaseService.collections.viatorDestinations!.findOne<ViatorDestination>(
       {
@@ -30,7 +31,7 @@ async function lookupDestination(
               type: 'Point',
               coordinates: [lng, lat],
             },
-            $maxDistance: parseInt(getValue('VIATOR_MAX_DISTANCE', '1000')),
+            $maxDistance: parseInt(getValue('VIATOR_MAX_DISTANCE', '10000')),
           },
         },
       },
@@ -76,8 +77,8 @@ async function callForDestinations(): Promise<ViatorDestination[]> {
 
 async function callSearchForAttractions(
   filtering: AttractionFilters,
-  pagination: AttractionPagination,
-): Promise<AttractionSearchResult[]> {
+  pagination?: AttractionPagination,
+): Promise<AttractionSearchResult> {
   const res = await axios.post(
     `https://${getValue('VIATOR_API_HOST', 'api.sandbox.viator.com')}/partner/products/search`,
     {
@@ -101,13 +102,13 @@ async function callSearchForAttractions(
 
   console.log(res.headers);
 
-  return res.data as AttractionSearchResult[];
+  return res.data as AttractionSearchResult;
 }
 
 async function searchForAttractions(
   filtering: AttractionFilters,
-  pagination: AttractionPagination,
-): Promise<AttractionSearchResult[]> {
+  pagination?: AttractionPagination,
+): Promise<AttractionSearchResult> {
   // todo do cache lookup based on destination id here
   // have to search by pagination though otherwise won't get correct info
 

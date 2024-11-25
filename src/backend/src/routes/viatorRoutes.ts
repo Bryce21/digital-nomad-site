@@ -35,7 +35,7 @@ viatorRouter.get(
   '/attractions',
   query('address').notEmpty().isString().escape(),
   query('start').default(0).isInt(),
-  query('count').default(10).isInt({ max: 100 }),
+  query('count').default(50).isInt({ max: 50 }),
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const result = validationResult(req);
@@ -43,11 +43,13 @@ viatorRouter.get(
         throw new Error(`Validation error: ${JSON.stringify(result.array())}`);
       }
       const data = matchedData(req);
+      console.log('data', data);
 
       const { lat, lng } = await getLatLngFromAddress(data.address);
 
       const destination = await lookupDestination(lat, lng);
 
+      console.log('destination', destination);
       if (!destination) {
         throw new Error(`Could not find destination for: ${data.address}`);
       }
@@ -60,9 +62,9 @@ viatorRouter.get(
         },
         { start: data.start, count: data.count },
       );
-      console.log('attractions', attractions);
+      console.log('attractions res', attractions.products.length);
 
-      return res.json(attractions);
+      return res.json({ attractions, destination });
     } catch (err) {
       console.error('Error getting attractions: ', err);
       next(err);

@@ -1,0 +1,15 @@
+.description-tooltip {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  max-width: 350px; /* Limit width for long descriptions */
+  word-wrap: break-word; /* Ensure long words wrap */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  color: #333;
+  white-space: normal; /* Allow wrapping */
+}
+
+.save {
+}

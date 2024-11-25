@@ -11,6 +11,7 @@ import { AppDispatch, RootState } from "./store/store";
 import { setSearchAddress } from "./store/reducers/searchReducer";
 import { useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
+import ViatorAttractions from "./components/data/viatorAttractions/ViatorAttractions";
 
 function App() {
   // const [location, setLocation] = useState<string | undefined>();
@@ -70,6 +71,7 @@ function App() {
               }}
             />
           </Header>
+
           <Content style={{ marginTop: "60px" }}>
             <Collapse
               size="large"
@@ -81,6 +83,22 @@ function App() {
                   children: location ? (
                     <div style={{ height: "100vh" }}>
                       <MapWidget location={location} />
+                    </div>
+                  ) : undefined,
+                  // extra: <Setting onClick={() => {}} />,
+                },
+              ]}
+            />
+            <Collapse
+              size="large"
+              collapsible={!location ? "disabled" : undefined}
+              items={[
+                {
+                  key: "1",
+                  label: "Attractions",
+                  children: location ? (
+                    <div style={{ height: "100vh" }}>
+                      <ViatorAttractions inputAddress={location} />
                     </div>
                   ) : undefined,
                   // extra: <Setting onClick={() => {}} />,
