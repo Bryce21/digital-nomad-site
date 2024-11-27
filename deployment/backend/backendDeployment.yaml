@@ -47,9 +47,3 @@ spec:
                   key: DB_NAME
             - name: LAT_LONG_COLLECTION
               value: latLong
-          # livenessProbe:
-          #   httpGet:
-          #   path: /healthz
-          #   port: 4000
-          #   initialDelaySeconds: 3
-          #   periodSeconds: 5

@@ -1,15 +1,13 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { AttractionsState, Attraction } from "../types";
-import { getAttractions } from "../../services/viatorService";
+/* eslint-disable no-param-reassign */
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { AttractionsState, Attraction } from '../types';
+import getAttractions from '../../services/viatorService';
 import {
-  AttractionSearchResult,
   AttractionsPagination,
   AttractionResponse,
-  ViatorDestination,
-} from "../../services/types";
+} from '../../services/types';
 
 export const initialState: AttractionsState = {
-  filters: {},
   data: [],
   loading: true,
   destination: undefined,
@@ -18,26 +16,40 @@ export const initialState: AttractionsState = {
 };
 
 export const fetchAttractionsPage = createAsyncThunk(
-  "attractions/fetchPage",
+  'attractions/fetchPage',
   async ({
     inputAddress,
     pagination,
+    maxPrice,
+    minRating,
   }: {
     inputAddress: string;
     pagination?: AttractionsPagination;
+    maxPrice?: number;
+    minRating?: number;
   }) => {
-    const res = await getAttractions(inputAddress, pagination);
+    console.log('info', { maxPrice, minRating });
+    const res = await getAttractions(inputAddress, pagination, {
+      maxPrice,
+      minRating,
+    });
     return res;
   }
 );
 
 export const attractionsReducer = createSlice({
-  name: "attractions",
+  name: 'attractions',
   initialState,
   reducers: {
     setRows: (state, action: PayloadAction<Attraction[]>) => {
       state.data = action.payload;
       state.loading = false;
+    },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
+    setError: (state, action: PayloadAction<Error | undefined>) => {
+      state.error = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -54,6 +66,6 @@ export const attractionsReducer = createSlice({
   },
 });
 
-export const { setRows } = attractionsReducer.actions;
+export const { setRows, setLoading, setError } = attractionsReducer.actions;
 
 export default attractionsReducer.reducer;

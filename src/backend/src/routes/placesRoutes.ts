@@ -65,6 +65,7 @@ placesRouter.get(
       if (!result.isEmpty()) {
         throw new Error(`Validation error: ${JSON.stringify(result.array())}`);
       }
+
       const data = matchedData(req);
       const lookForTypes = data.lookForTypes
         ? data.lookForTypes.split(',')

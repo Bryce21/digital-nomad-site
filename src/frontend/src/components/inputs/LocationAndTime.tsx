@@ -1,6 +1,4 @@
-import {
-  AutoComplete, Button, Col, Form, Row, Modal,
-} from 'antd';
+import { AutoComplete, Button, Col, Form, Row, Modal } from 'antd';
 
 import { InfoCircleTwoTone } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
@@ -36,26 +34,26 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
 
   return (
     <Row
-      justify="end"
+      justify='end'
       style={{
         width: '100%',
         flex: 1,
         height: '100%',
         float: 'right',
       }}
-      align="middle"
+      align='middle'
       gutter={[8, 0]}
     >
       <Col
         span={24}
         style={{ width: '100%', float: 'right' }}
         // span={23}
-        flex="auto"
+        flex='auto'
       >
         <Form
           form={form}
           style={{ maxWidth: 'none', float: 'right' }}
-          layout="inline"
+          layout='inline'
           onFinish={(values) => {
             props.onFinish({
               location: values.location,
@@ -68,7 +66,7 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
           />
           <Form.Item
             rules={[{ required: true, message: 'Please input a location' }]}
-            name="location"
+            name='location'
           >
             <AutoComplete
               value={location}
@@ -80,13 +78,13 @@ export default function LocationAndTime(props: LocationAndTimeProps) {
               onSelect={(data) => {
                 setLocation(data);
               }}
-              placeholder="Location"
+              placeholder='Location'
             />
           </Form.Item>
           <Form.Item>
             <Button
-              type="primary"
-              htmlType="submit"
+              type='primary'
+              htmlType='submit'
               style={{ marginLeft: '-10px' }}
             >
               Ok

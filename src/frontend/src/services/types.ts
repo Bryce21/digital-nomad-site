@@ -1,4 +1,6 @@
-import { Attraction } from "../store/types";
+// eslint-disable-next-line
+import { Attraction } from '../store/types';
+
 export type AttractionSearchResult = {
   products: Attraction[];
   totalCount: number;

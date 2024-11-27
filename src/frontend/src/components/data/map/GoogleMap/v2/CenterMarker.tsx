@@ -17,7 +17,7 @@ export function CenterMarker(props: CenterMarkerProps) {
     <GoogleMapMarker<CenterMarkerProps>
       lat={props.latLong.lat}
       long={props.latLong.lng}
-      iconColor="red"
+      iconColor='red'
       data={props}
       popupData={() => renderPopup(props)}
     />

@@ -19,8 +19,8 @@ export function OpenAiWidget(props: OpenAiWidgetProps) {
       <Row>
         <Col span={12}>
           <Collapse
-            className="collapse-panel"
-            size="large"
+            className='collapse-panel'
+            size='large'
             collapsible={!location ? 'disabled' : undefined}
             style={{ maxHeight: '60vh' }}
             items={[
@@ -41,10 +41,9 @@ export function OpenAiWidget(props: OpenAiWidgetProps) {
         </Col>
         <Col span={12}>
           <Collapse
-            className="collapse-panel"
-            size="large"
+            className='collapse-panel'
+            size='large'
             collapsible={!location ? 'disabled' : undefined}
-            // style={{ maxHeight: "20vh" }}
             items={[
               {
                 key: '1',
@@ -55,7 +54,6 @@ export function OpenAiWidget(props: OpenAiWidgetProps) {
                     getData={(x: string) => getThingsToDoSuggestions(x)}
                   />
                 ),
-                // extra: <Setting onClick={() => {}} />,
               },
             ]}
           />

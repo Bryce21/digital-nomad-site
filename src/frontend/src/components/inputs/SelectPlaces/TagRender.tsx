@@ -7,9 +7,7 @@ export function TagRender(props: {
   getColor: (x: string) => string;
 }) {
   const { defaultProps, getColor } = props;
-  const {
-    label, closable, value, onClose,
-  } = defaultProps;
+  const { label, closable, value, onClose } = defaultProps;
   const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
     event.preventDefault();
     event.stopPropagation();

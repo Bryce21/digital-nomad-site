@@ -1,5 +1,6 @@
 /*eslint-disable */
 import React, { Component } from "react";
+import ErrorComponent from "./ErrorComponent";
 
 // From - https://www.developerway.com/posts/how-to-handle-errors-in-react
 // eslint-disable-next-line
@@ -29,7 +30,7 @@ export class ErrorBoundary extends Component<any, any> {
     // todo make a good error component
     // if error happened, return a fallback component
     if (this.state.hasError) {
-      return <div>Error!!</div>;
+      return <ErrorComponent error={this.state.error} />;
     }
 
     return this.props.children;

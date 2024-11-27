@@ -1,15 +1,15 @@
-import {
-  AttractionSearchResult,
-  AttractionsPagination,
-  AttractionResponse,
-} from "./types";
-import axios from "axios";
+import axios from 'axios';
+import { AttractionsPagination, AttractionResponse } from './types';
 
-export async function getAttractions(
+export default async function getAttractions(
   inputAddress: string,
-  pagination?: AttractionsPagination
+  pagination?: AttractionsPagination,
+  filters?: {
+    maxPrice?: number;
+    minRating?: number;
+  }
 ): Promise<AttractionResponse> {
-  console.log("pagination", pagination);
+  console.log('pagination', pagination);
   const res = await axios.get<AttractionResponse>(
     `http://${process.env.REACT_APP_BACKEND_HOST}/viator/attractions`,
     {
@@ -17,9 +17,11 @@ export async function getAttractions(
         address: inputAddress,
         start: pagination?.start,
         count: pagination?.count,
+        maxPrice: filters?.maxPrice,
+        minRating: filters?.minRating,
       },
     }
   );
-  console.log("attractions res", res);
+  console.log('attractions res', res);
   return res.data;
 }

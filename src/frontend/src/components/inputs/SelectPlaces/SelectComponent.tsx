@@ -12,7 +12,7 @@ interface SelectProps {
 
 function renderTagRender(
   y: CustomTagProps,
-  colors: { [index: string]: string },
+  colors: { [index: string]: string }
 ) {
   return (
     <TagRender
@@ -25,12 +25,12 @@ function renderTagRender(
 export function SelectComponent(props: SelectProps) {
   return (
     <Select
-      mode="tags"
+      mode='tags'
       maxCount={props.maxCount || 5}
       allowClear
       tagRender={(x) => renderTagRender(x, props.colors)}
       style={{ width: '100%' }}
-      placeholder="Please select"
+      placeholder='Please select'
       defaultValue={[]}
       onChange={(v) => {
         console.log('v', v);

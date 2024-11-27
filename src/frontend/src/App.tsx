@@ -1,20 +1,17 @@
-import React, { useState } from "react";
-import "./styles.css";
-import axios from "axios";
-import { Collapse, Flex, Layout } from "antd";
-import { Content, Header } from "antd/es/layout/layout";
-import { MapWidget } from "./components/data/map/GoogleMap/v2/MapWidget";
-import LocationAndTime from "./components/inputs/LocationAndTime";
-import { OpenAiWidget } from "./components/data/openai/OpenAiWidget";
-import { useDispatch } from "react-redux";
-import { AppDispatch, RootState } from "./store/store";
-import { setSearchAddress } from "./store/reducers/searchReducer";
-import { useSelector } from "react-redux";
-import { useAppDispatch, useAppSelector } from "./store/hooks";
-import ViatorAttractions from "./components/data/viatorAttractions/ViatorAttractions";
+import React from 'react';
+import './styles.css';
+import axios from 'axios';
+import { Collapse, Flex, Layout } from 'antd';
+import { Content, Header } from 'antd/es/layout/layout';
+import { MapWidget } from './components/data/map/GoogleMap/v2/MapWidget';
+import LocationAndTime from './components/inputs/LocationAndTime';
+import { OpenAiWidget } from './components/data/openai/OpenAiWidget';
+import { AppDispatch, RootState } from './store/store';
+import { setSearchAddress } from './store/reducers/searchReducer';
+import { useAppDispatch, useAppSelector } from './store/hooks';
+import ViatorAttractions from './components/data/viatorAttractions/ViatorAttractions';
 
 function App() {
-  // const [location, setLocation] = useState<string | undefined>();
   const dispatch: AppDispatch = useAppDispatch();
 
   const setLocation = (inputAddress: string | undefined) => {
@@ -22,7 +19,6 @@ function App() {
   };
 
   const location = useAppSelector((state: RootState) => {
-    console.log("state", state);
     return state?.search?.inputAddress;
   });
 
@@ -41,24 +37,24 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className='app'>
       <meta
-        name="keywords"
-        content="travel, digital nomad, traveler, things to do, things to eat"
+        name='keywords'
+        content='travel, digital nomad, traveler, things to do, things to eat'
       />
       <meta
-        name="description"
-        content="Site to help with travel - lists things to do and eat around an area"
+        name='description'
+        content='Site to help with travel - lists things to do and eat around an area'
       />
 
       <Flex>
         <Layout>
           <Header
             style={{
-              position: "fixed",
+              position: 'fixed',
               top: 0,
               left: 0,
-              width: "100%",
+              width: '100%',
               // height: "100%",
               zIndex: 1000,
               padding: 0,
@@ -72,16 +68,16 @@ function App() {
             />
           </Header>
 
-          <Content style={{ marginTop: "60px" }}>
+          <Content style={{ marginTop: '60px' }}>
             <Collapse
-              size="large"
-              collapsible={!location ? "disabled" : undefined}
+              size='large'
+              collapsible={!location ? 'disabled' : undefined}
               items={[
                 {
-                  key: "1",
-                  label: "Map",
+                  key: '1',
+                  label: 'Map',
                   children: location ? (
-                    <div style={{ height: "100vh" }}>
+                    <div style={{ height: '100vh' }}>
                       <MapWidget location={location} />
                     </div>
                   ) : undefined,
@@ -89,23 +85,27 @@ function App() {
                 },
               ]}
             />
+            <div>Ad here</div>
             <Collapse
-              size="large"
-              collapsible={!location ? "disabled" : undefined}
+              size='large'
+              collapsible={!location ? 'disabled' : undefined}
               items={[
                 {
-                  key: "1",
-                  label: "Attractions",
+                  key: '1',
+                  label: 'Attractions',
                   children: location ? (
-                    <div style={{ height: "100vh" }}>
-                      <ViatorAttractions inputAddress={location} />
+                    <div style={{ height: '100vh' }}>
+                      <ViatorAttractions />
                     </div>
                   ) : undefined,
                   // extra: <Setting onClick={() => {}} />,
                 },
               ]}
             />
+            <div>Ad here</div>
             <OpenAiWidget location={location} />
+
+            <div>Ad here</div>
           </Content>
         </Layout>
       </Flex>

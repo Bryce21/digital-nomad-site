@@ -11,8 +11,8 @@ export function DataInPopup(props: DataInPopupProps) {
   return (
     <span>
       <Descriptions
-        size="small"
-        layout="horizontal"
+        size='small'
+        layout='horizontal'
         bordered
         column={{
           xs: 24,

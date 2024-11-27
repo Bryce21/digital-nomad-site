@@ -17,6 +17,12 @@ export type ViatorDestinationResponse = {
 
 export type AttractionFilters = {
   destination: string;
+  lowestPrice?: number;
+  highestPrice?: number;
+  rating?: {
+    from?: number;
+    to?: number;
+  };
 };
 
 export type AttractionPagination = {

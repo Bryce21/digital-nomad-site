@@ -11,7 +11,7 @@ export interface CleanedAiResponse {
 }
 
 async function getFoodSuggestions(
-  inputAddress: string,
+  inputAddress: string
 ): Promise<CleanedAiResponse> {
   const res = await axios.get<CleanedAiResponse>(
     `http://${process.env.REACT_APP_BACKEND_HOST}/openai/food`,
@@ -19,13 +19,13 @@ async function getFoodSuggestions(
       params: {
         location: inputAddress,
       },
-    },
+    }
   );
   return res.data;
 }
 
 async function getThingsToDoSuggestions(
-  inputAddress: string,
+  inputAddress: string
 ): Promise<CleanedAiResponse> {
   const res = await axios.get<CleanedAiResponse>(
     `http://${process.env.REACT_APP_BACKEND_HOST}/openai/toDo`,
@@ -33,7 +33,7 @@ async function getThingsToDoSuggestions(
       params: {
         location: inputAddress,
       },
-    },
+    }
   );
   return res.data;
 }

@@ -1,90 +1,96 @@
-import React, { useEffect, useState, useMemo } from "react";
-import { ErrorBoundary } from "../../common/ErrorBoundary";
-import { AgGridReact } from "ag-grid-react";
-import { GridApi } from "ag-grid-community";
+import React, { useMemo } from 'react';
+import { AgGridReact } from 'ag-grid-react';
+import { ColDef, IGetRowsParams, ITooltipParams } from 'ag-grid-community';
+import { Tooltip } from 'antd';
+import { useSelector } from 'react-redux';
+import { ErrorBoundary } from '../../common/ErrorBoundary';
+import ErrorComponent from '../../common/ErrorComponent';
 
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { RootState } from "../../../store/store";
-import { ColDef, IGetRowsParams } from "ag-grid-community";
-import { Attraction } from "../../../store/types";
-import { getAttractions } from "../../../services/viatorService";
-import { setRows } from "../../../store/reducers/attractionsReducer";
-import { Tooltip } from "antd";
-import { ViatorDestination } from "../../../services/types";
-import { fetchAttractionsPage } from "../../../store/reducers/attractionsReducer";
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { RootState } from '../../../store/store';
+import { Attraction } from '../../../store/types';
+import {
+  fetchAttractionsPage,
+  setLoading,
+  setError,
+} from '../../../store/reducers/attractionsReducer';
 
-// import "ag-grid-community/styles/ag-grid.css";
-// import "ag-grid-community/styles/ag-theme-quartz.css";
-import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the Data Grid
-import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the Data Grid
-import { useSelector } from "react-redux";
-
-// React Grid Logic
-// import "@ag-grid-community/styles/ag-grid.css";
-// // Core CSS
-// import "@ag-grid-community/styles/ag-theme-quartz.css";
+import 'ag-grid-community/styles/ag-grid.css'; // Mandatory CSS required by the Data Grid
+import 'ag-grid-community/styles/ag-theme-quartz.css'; // Optional Theme applied to the Data Grid
 
 export type ViatorAttractionsProps = {
   inputAddress: string;
 };
 
-export default function ViatorAttractions(props: ViatorAttractionsProps) {
+export default function ViatorAttractions() {
   const dispatch = useAppDispatch();
+  //   const [gridApi, setGridApi] = React.useState<GridApi | null>(null);
+  const loading = useAppSelector(
+    (state: RootState) => state.attractions.loading
+  );
 
-  const [gridApi, setGridApi] = React.useState<GridApi | null>(null);
+  const inputAddress = useAppSelector((state: RootState) => {
+    console.log('state', state);
+    // this component doesn't render unless the address exists
+    // eslint-disable-next-line
+    return state?.search?.inputAddress!;
+  });
 
-  //   const rows = useSelector((state: RootState) => state.attractions.data);
-  const loading = useSelector((state: RootState) => state.attractions.loading);
+  const error: Error | undefined = useSelector(
+    (state: RootState) => state.attractions.error
+  );
 
   const destination = useSelector(
     (state: RootState) => state.attractions.destination
   );
 
-  //   const [loading, setLoading] = useState(true);
-
   const datasource = useMemo(
     () => ({
       getRows: async (params: IGetRowsParams) => {
-        console.log("get rows called!!", params);
-        // setLoading(true);
-
-        const res = await dispatch(
-          fetchAttractionsPage({
-            inputAddress: props.inputAddress,
-            pagination: {
-              start: params.startRow,
-              count: 30,
-            },
-          })
-        ).unwrap();
-
-        // setDestination(res.destination);
-        params.successCallback(
-          res.attractions.products,
-          res.attractions.totalCount
-        );
+        try {
+          const res = await dispatch(
+            fetchAttractionsPage({
+              inputAddress,
+              pagination: {
+                start: params.startRow,
+                count: 30,
+              },
+              maxPrice: params?.filterModel?.price?.filter,
+              minRating: params?.filterModel?.rating?.filter,
+            })
+          ).unwrap();
+          params.successCallback(
+            res.attractions.products,
+            res.attractions.totalCount
+          );
+        } catch (err) {
+          const typedE = err as Error;
+          console.error(err);
+          dispatch(setError(typedE));
+          dispatch(setLoading(false));
+        }
       },
     }),
-    []
+    [inputAddress]
   );
 
-  const linkCellRenderer = (params: any) => {
+  const linkCellRenderer = (params: { value: string }) => {
     const url = params.value;
     return url ? (
-      <a href={url} target="_blank" rel="noopener noreferrer">
+      <a href={url} target='_blank' rel='noopener noreferrer'>
         Link
       </a>
     ) : null;
   };
 
-  const descriptionCellRenderer = (params: any) => {
-    const value = params.value;
+  const descriptionCellRenderer = (params: { value: string }) => {
+    const { value } = params;
     return (
       <Tooltip
         title={value}
-        placement="topLeft"
+        placement='topLeft'
         autoAdjustOverflow
-        style={{ width: "50vh" }}
+        style={{ width: '50vh' }}
       >
         {params.value}
       </Tooltip>
@@ -94,57 +100,44 @@ export default function ViatorAttractions(props: ViatorAttractionsProps) {
   const colDefs: ColDef[] = useMemo(
     () => [
       {
-        colId: "title",
-
-        field: "title",
+        colId: 'title',
+        tooltipField: 'title',
+        field: 'title',
         flex: 8,
         sortable: false,
-        // filter: "agTextColumnFilter",
-        // filterParams: {
-        //   filterOptions: ["contains"],
-        //   maxNumConditions: 1,
-        // },
       },
       {
-        colId: "description",
-        field: "description",
+        colId: 'description',
+        field: 'description',
         flex: 10,
         cellRenderer: descriptionCellRenderer,
         sortable: false,
-        // filter: "agTextColumnFilter",
-        // filterParams: {
-        //   filterOptions: ["contains"],
-        //   maxNumConditions: 1,
-        // },
       },
       {
         flex: 3,
-        colId: "Review",
-        headerName: "Rating",
+        colId: 'rating',
+        headerName: 'Rating',
         sortable: false,
+        tooltipValueGetter: (p: ITooltipParams) => {
+          return p.data?.reviews?.combinedAverageRating ?? 'NA';
+        },
         filterParams: {
-          filterOptions: ["greaterThan", "lessThan"],
+          filterOptions: ['greaterThan'],
           maxNumConditions: 1,
         },
-        filter: "agNumberColumnFilter",
-        // todo this doesn't handle zero
+        filter: 'agNumberColumnFilter',
         valueGetter: (p: { data: Attraction }) => {
-          return p.data?.reviews?.combinedAverageRating !== undefined
-            ? p.data.reviews.combinedAverageRating
-            : "NA";
+          return p.data?.reviews?.combinedAverageRating ?? 'NA';
         },
       },
       {
         flex: 3,
-        colId: "numberOfReviews",
-        headerName: "# Reviews",
+        colId: 'numberOfReviews',
+        headerName: '# Reviews',
+        tooltipValueGetter: (p: ITooltipParams) => {
+          return p.data?.reviews?.totalReviews;
+        },
         sortable: false,
-        // filterParams: {
-        //   filterOptions: ["greaterThan", "lessThan"],
-        //   maxNumConditions: 1,
-        // },
-        // filter: "agNumberColumnFilter",
-        // todo this doesn't handle zero
         valueGetter: (p: { data: Attraction }) => {
           return p.data?.reviews?.totalReviews;
         },
@@ -152,14 +145,19 @@ export default function ViatorAttractions(props: ViatorAttractionsProps) {
       {
         flex: 2,
         sortable: false,
-        colId: "price",
-        headerName: "Price",
+        colId: 'price',
+        headerName: 'Price',
         filterParams: {
-          filterOptions: ["greaterThan", "lessThan"],
+          filterOptions: ['lessThan'],
           maxNumConditions: 1,
         },
-        filter: "agNumberColumnFilter",
-        // todo this doesn't handle zero
+        tooltipValueGetter: (p: ITooltipParams) => {
+          return (
+            p.data?.pricing?.summary?.fromPrice ||
+            p.data?.pricing?.summary?.fromPriceBeforeDiscount
+          );
+        },
+        filter: 'agNumberColumnFilter',
         valueGetter: (p: { data: Attraction }) => {
           return (
             p.data?.pricing?.summary?.fromPrice ||
@@ -170,65 +168,57 @@ export default function ViatorAttractions(props: ViatorAttractionsProps) {
 
       {
         flex: 2,
-        colId: "currency",
+        colId: 'currency',
         sortable: false,
-        headerName: "Currency",
-        // todo this doesn't handle zero
+        headerName: 'Currency',
         valueGetter: (p: { data: Attraction }) => {
-          return p.data?.pricing?.currency || "NA";
+          return p.data?.pricing?.currency || 'NA';
         },
       },
       {
-        colId: "productUrl",
+        colId: 'productUrl',
         sortable: false,
-        field: "productUrl",
+        field: 'productUrl',
+        flex: 2,
         cellRenderer: linkCellRenderer,
       },
     ],
     []
   );
 
-  return (
-    <div style={{ height: "100%", width: "100%" }}>
+  const attemptRenderData = () => {
+    return (
       <ErrorBoundary>
         Viator destination - {destination?.name}
         <div
-          className="ag-theme-quartz-dark"
-          style={{ height: "100%", width: "100%" }}
+          className='ag-theme-quartz-dark'
+          style={{ height: '100%', width: '100%' }}
         >
           <AgGridReact
-            //   onGridReady={(params) => setGridApi(params.api)}
-            // todo add a max page size
-            onGridReady={(params: any) => {
-              const gridApi = params.api;
-              setGridApi(gridApi);
-
-              // todo Enforce a maximum page size
-              // setTimeout(() => {
-              //   const currentPageSize = gridApi.paginationGetPageSize();
-              //   const maxPageSize = 100; // Define your maximum page size
-              //   if (currentPageSize > maxPageSize) {
-              //     gridApi.pag;
-              //   }
-              // }, 0);
-            }}
-            pagination={true}
+            // onGridReady={(params: any) => {
+            //   const gridApi = params.api;
+            //   setGridApi(gridApi);
+            // }}
+            pagination
             loading={loading}
-            //   rowData={rowData}
             columnDefs={colDefs}
             tooltipShowDelay={300}
-            tooltipInteraction={true}
-            //   paginationAutoPageSize={true}
+            tooltipInteraction
             paginationPageSizeSelector={[15, 30]}
-            rowModelType={"infinite"}
+            rowModelType='infinite'
             datasource={datasource}
             paginationPageSize={15}
             cacheBlockSize={30}
             blockLoadDebounceMillis={200}
-            //   cacheBlockSize={10}
           />
         </div>
       </ErrorBoundary>
+    );
+  };
+
+  return (
+    <div style={{ height: '100%', width: '100%' }}>
+      {error ? <ErrorComponent error={error} /> : attemptRenderData()}
     </div>
   );
 }

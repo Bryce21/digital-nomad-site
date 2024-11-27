@@ -78,6 +78,8 @@ export async function initializeDB() {
 }
 
 export async function connectToDatabase() {
+  console.log('process.env', process.env)
+
   const client: mongoDB.MongoClient = new mongoDB.MongoClient(
     ConfigService.getRequiredValue('DB_CONN_STRING'),
     {

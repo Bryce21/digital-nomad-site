@@ -13,9 +13,7 @@ export default function GoogleMapMarker<T>(props: GoogleMapMarkerProps<T>) {
   const [infoWindowOpen, setInfoWindowOpen] = useState(false);
   const [markerRef, marker] = useMarkerRef();
 
-  const {
-    lat, long, popupData, data,
-  } = props;
+  const { lat, long, popupData, data } = props;
   return (
     <>
       <Marker

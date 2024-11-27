@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Search, SetSearchPayload } from "../types";
-import { LatLng, Place } from "../../types/types";
+/* eslint-disable no-param-reassign */
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Search, SetSearchPayload } from '../types';
+import { LatLng, Place } from '../../types/types';
 
 export const initialState: Search = {
   inputAddress: undefined,
@@ -8,12 +9,13 @@ export const initialState: Search = {
   places: [],
   colors: {},
   searchTypes: [],
+  error: undefined,
 };
 
-const colors = ["blue", "orange", "green", "cyan", "yellow"];
+const colors = ['blue', 'orange', 'green', 'cyan', 'yellow'];
 
 export const searchReducer = createSlice({
-  name: "search",
+  name: 'search',
   initialState,
   reducers: {
     setSearchAddress: (state, action: PayloadAction<string | undefined>) => {
@@ -64,7 +66,7 @@ export const searchReducer = createSlice({
         types.forEach((type: string) => {
           if (!updatedColorMap[type]) {
             const nextColorIndex = Object.keys(updatedColorMap).length;
-            const color = colors[nextColorIndex] || "default";
+            const color = colors[nextColorIndex] || 'default';
             updatedColorMap[type] = color;
           }
         });
@@ -75,7 +77,9 @@ export const searchReducer = createSlice({
       }
     },
 
-    setColors: (state) => {},
+    setError: (state, action: PayloadAction<Error | undefined>) => {
+      state.error = action.payload;
+    },
   },
 });
 
@@ -85,6 +89,7 @@ export const {
   setPlaces,
   setSearchCenter,
   setSearchTypes,
+  setError,
 } = searchReducer.actions;
 
 export default searchReducer.reducer;

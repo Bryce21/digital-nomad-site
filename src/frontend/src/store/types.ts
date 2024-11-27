@@ -1,5 +1,6 @@
-import { LatLng, Place } from "../types/types";
-import { ViatorDestination } from "../services/types";
+import { LatLng, Place } from '../types/types';
+// eslint-disable-next-line
+import { ViatorDestination } from '../services/types';
 
 export type Metadata = {
   canConnect: boolean;
@@ -13,6 +14,7 @@ export type Search = {
   places?: Place[];
   colors?: { [index: string]: string };
   searchTypes?: string[];
+  error?: Error;
 };
 
 export type StoreState = {
@@ -70,13 +72,11 @@ export type Attraction = {
   pricing: Pricing;
 };
 
-export type AttractionFilters = {};
-
 export type AttractionsState = {
   loading: boolean;
-  filters: AttractionFilters;
   data: Attraction[];
   totalCount: number;
   currentPage: number;
   destination?: ViatorDestination;
+  error?: Error;
 };

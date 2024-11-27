@@ -19,6 +19,7 @@ spec:
       containers:
         - name: backend
           image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
+          imagePullPolicy: Always
           command: ["npm", "run", "start"]
           ports:
             - containerPort: {{ .Values.backend.containerPort }}
@@ -28,24 +29,24 @@ spec:
             - name: GOOGLE_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.backend.secrets.name }}
+                  name: {{ .Release.Name }}-{{ .Values.backend.secrets.name }}
                   key: GOOGLE_API_KEY
             - name: OPENAI_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.backend.secrets.name }}
+                  name: {{ .Release.Name }}-{{ .Values.backend.secrets.name }}
                   key: OPENAI_API_KEY
             - name: OPENAPI_MODEL
               value: "{{ .Values.backend.env.OPENAPI_MODEL }}"
             - name: DB_CONN_STRING
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.backend.secrets.name }}
+                  name: {{ .Release.Name }}-{{ .Values.backend.secrets.name }}
                   key: DB_CONN_STRING
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.backend.secrets.name }}
+                  name: {{ .Release.Name }}-{{ .Values.backend.secrets.name }}
                   key: DB_NAME
             - name: LAT_LONG_COLLECTION
               value: "{{ .Values.backend.env.LAT_LONG_COLLECTION }}"

@@ -36,12 +36,17 @@ viatorRouter.get(
   query('address').notEmpty().isString().escape(),
   query('start').default(0).isInt(),
   query('count').default(50).isInt({ max: 50 }),
+  query('maxPrice').optional().isInt(),
+  query('minPrice').optional().isInt(),
+  query('minRating').optional().isInt(),
+  query('maxRating').optional().isInt(),
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const result = validationResult(req);
       if (!result.isEmpty()) {
         throw new Error(`Validation error: ${JSON.stringify(result.array())}`);
       }
+      //   throw new Error('Instant error');
       const data = matchedData(req);
       console.log('data', data);
 
@@ -56,9 +61,20 @@ viatorRouter.get(
 
       console.log('destination found!!', destination);
 
+      const rating =
+        data?.minRating !== undefined || data.maxRating !== undefined
+          ? {
+              from: data?.minRating,
+              to: data?.maxRating,
+            }
+          : {};
+
       const attractions = await searchForAttractions(
         {
           destination: destination.destinationId,
+          highestPrice: data?.maxPrice,
+          lowestPrice: data?.minPrice,
+          rating,
         },
         { start: data.start, count: data.count },
       );

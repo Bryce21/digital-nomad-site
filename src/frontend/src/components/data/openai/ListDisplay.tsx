@@ -5,6 +5,7 @@ import {
   CleanedAiResponse,
   ExpectedAIResponseFormat,
 } from '../../../services/aiService';
+import ErrorComponent from '../../common/ErrorComponent';
 
 export interface FoodWidgetProps {
   location: string;
@@ -13,6 +14,7 @@ export interface FoodWidgetProps {
 
 export function ListDisplay(props: FoodWidgetProps) {
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error | null>(null);
 
   const [suggestions, setSuggestions] = useState<CleanedAiResponse>({
     data: [],
@@ -25,10 +27,10 @@ export function ListDisplay(props: FoodWidgetProps) {
       try {
         setLoading(true);
         const res: CleanedAiResponse = await props.getData(props.location);
-        console.log('res', res);
         setSuggestions(res);
       } catch (err) {
         console.error(err);
+        setError(err as Error);
       } finally {
         setLoading(false);
       }
@@ -38,7 +40,6 @@ export function ListDisplay(props: FoodWidgetProps) {
 
   function renderSuggestionList() {
     const data = suggestions.data as ExpectedAIResponseFormat[];
-    console.log('rendering list', data);
 
     return (
       <List
@@ -49,12 +50,14 @@ export function ListDisplay(props: FoodWidgetProps) {
         dataSource={data}
         renderItem={(item) => (
           <List.Item>
-            <Typography.Text color="blue">
+            <Typography.Text color='blue'>
               {/* eslint-disable-next-line */}
               <a
-                onClick={() => window.open(
-                  `https://www.google.com/search?q=${props.location} + ${item.name}`,
-                )}
+                onClick={() =>
+                  window.open(
+                    `https://www.google.com/search?q=${props.location} + "${item.name}"`
+                  )
+                }
               >
                 {item.name}
               </a>
@@ -70,7 +73,11 @@ export function ListDisplay(props: FoodWidgetProps) {
 
   return (
     <div>
-      <ErrorBoundary>{renderSuggestionList()}</ErrorBoundary>
+      {error ? (
+        <ErrorComponent error={error} />
+      ) : (
+        <ErrorBoundary>{renderSuggestionList()}</ErrorBoundary>
+      )}
     </div>
   );
 }

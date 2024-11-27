@@ -31,7 +31,7 @@ async function lookupDestination(
               type: 'Point',
               coordinates: [lng, lat],
             },
-            $maxDistance: parseInt(getValue('VIATOR_MAX_DISTANCE', '10000')),
+            $maxDistance: parseInt(getValue('VIATOR_MAX_DISTANCE', '20000')),
           },
         },
       },
