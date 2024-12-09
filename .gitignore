@@ -11,3 +11,4 @@ src/frontend/.env
 
 src/backend/logs
 docker-compose.dev.yml
+deployment/traveler-deployment/values.filled.yaml
