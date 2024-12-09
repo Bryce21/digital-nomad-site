@@ -23,6 +23,18 @@ spec:
           command: ["npm", "run", "start"]
           ports:
             - containerPort: {{ .Values.backend.containerPort }}
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.backend.containerPort }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.backend.containerPort }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
           env:
             - name: PORT
               value: "{{ .Values.backend.env.PORT }}"
