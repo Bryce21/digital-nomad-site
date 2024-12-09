@@ -110,6 +110,7 @@ placesRouter.get(
               : undefined,
             address: value.formatted_address,
             fromType,
+            place_id: value?.place_id,
           }));
         },
       );

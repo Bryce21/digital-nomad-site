@@ -3,7 +3,14 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-backend-ingress
   annotations:
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET"
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/cors-allow-origin: "{{ .Values.frontend.ingress.host }}"
+    nginx.ingress.kubernetes.io/limit-connections: "{{ .Values.backend.ingress.connection_limit }}"
+    nginx.ingress.kubernetes.io/limit-rps: "{{ .Values.backend.ingress.requests_per_second_limit }}"         
+    nginx.ingress.kubernetes.io/limit-burst-multiplier: "{{ .Values.backend.ingress.limit_burst_multiplier }}"
+    nginx.ingress.kubernetes.io/limit-rate-after: "{{ .Values.backend.ingress.limit_rate_after }}"
 spec:
   rules:
     - host: {{ .Values.backend.ingress.host }}

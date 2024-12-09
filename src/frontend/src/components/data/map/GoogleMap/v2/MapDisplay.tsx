@@ -43,6 +43,14 @@ export function GoogleMap(props: GoogleMapProps) {
               // but needs to line up with antd multi select component
               iconColor={props.colors[place.fromType]}
               data={place}
+              onClick={() => {
+                if (place.place_id) {
+                  window.open(
+                    `https://www.google.com/maps/place/?q=place_id:${place.place_id}`,
+                    '_blank'
+                  );
+                }
+              }}
               popupData={(d: Place) => displayPlaceData(d)}
             />
           )),

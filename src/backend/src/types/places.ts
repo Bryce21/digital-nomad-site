@@ -12,4 +12,5 @@ export interface ApiPlacesResponse {
   };
   address: string | undefined;
   fromType: string;
+  place_id?: string;
 }

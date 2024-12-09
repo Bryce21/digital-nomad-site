@@ -38,15 +38,6 @@ function App() {
 
   return (
     <div className='app'>
-      <meta
-        name='keywords'
-        content='travel, digital nomad, traveler, things to do, things to eat'
-      />
-      <meta
-        name='description'
-        content='Site to help with travel - lists things to do and eat around an area'
-      />
-
       <Flex>
         <Layout>
           <Header

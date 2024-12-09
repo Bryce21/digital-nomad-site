@@ -4,6 +4,11 @@ metadata:
   name: {{ .Release.Name }}-frontend-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/limit-connections: "{{ .Values.frontend.ingress.connection_limit }}"
+    nginx.ingress.kubernetes.io/limit-rps: "{{ .Values.frontend.ingress.requests_per_second_limit }}"         
+    nginx.ingress.kubernetes.io/limit-burst-multiplier: "{{ .Values.frontend.ingress.limit_burst_multiplier }}"
+    nginx.ingress.kubernetes.io/limit-rate-after: "{{ .Values.frontend.ingress.limit_rate_after }}"
+
 spec:
   rules:
     - host: {{ .Values.frontend.ingress.host }}

@@ -8,21 +8,43 @@ services:
       target: build
     environment:
       PORT: 4000
-      GOOGLE_API_KEY: ""
-      OPENAI_API_KEY: ""
+      GOOGLE_API_KEY:
+      OPENAI_API_KEY:
       OPENAPI_MODEL: gpt-3.5-turbo
-      DB_CONN_STRING: ""
+      DB_CONN_STRING: "mongodb://database:27017/digitalNomadSite"
       DB_NAME: "digitalNomadSite"
       LAT_LONG_COLLECTION: "latLong"
+      VIATOR_API_KEY: ""
+      VIATOR_API_HEADER: ""
+      VIATOR_API_HOST: ""
     command: npm run start
+    depends_on:
+      - database
+    networks:
+      - backend-network
+
   frontend:
     ports:
       - 3000:80
     build:
       context: ./src/frontend
       target: frontend
+    environment:
+      BACKEND_HOST:
+      GOOGLE_MAPS_API_KEY:
     depends_on:
       - backend
+
+  database:
+    image: mongo:latest
     environment:
-      - REACT_APP_GOOGLE_MAPS_API_KEY
-      - REACT_APP_BACKEND_HOST
+      MONGO_INITDB_DATABASE: digitalNomadSite
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge

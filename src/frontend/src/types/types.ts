@@ -11,6 +11,7 @@ export interface Place {
   };
   address: string | undefined;
   fromType: string;
+  place_id?: string;
 }
 
 export interface LatLng {

@@ -202,7 +202,6 @@ export function MapWithData(props: MapWithDataProps) {
     return (
       <SelectComponent
         options={availablePlaceTypes.map((v: string) => ({
-          // todo cleanup label
           label: (v.charAt(0).toUpperCase() + v.slice(1)).replaceAll('_', ' '),
           value: v,
         }))}

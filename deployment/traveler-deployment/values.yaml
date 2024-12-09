@@ -4,7 +4,11 @@ global:
 
 frontend:
   ingress:
-    host: "app.traveler.com"
+    host: app.traveler.com
+    connection_limit: 10
+    limit_burst_multiplier: 2
+    requests_per_second_limit: 20
+    limit_rate_after: 5
   service:
     type: ClusterIP
   replicas: 1
@@ -12,10 +16,9 @@ frontend:
     repository: bryce21/digital-nomad-site
     tag: digital-nomad-site-frontend-latest
   containerPort: 3000
+  targetPort: 80
 
 backend:
-  ingress:
-    host: "api.traveler.com"
   service:
     port: 4000
     type: ClusterIP
@@ -31,13 +34,25 @@ backend:
   secrets:
     name: besecret
     googleApiKey:
-      key: GOOGLE_API_KEY
+      key: key
     openaiApiKey:
-      key: OPENAI_API_KEY
+      key: key
     dbConnString:
-      key: DB_CONN_STRING
+      key: mongodb://dev-database-service:27017/digitalNomadSite
     dbName:
-      key: DB_NAME
+      key: digitalNomadSite
+    viatorApiKey:
+      key: key
+    viatorApiHost:
+      key: api.sandbox.viator.com
+    viatorApiHeader:
+      key: exp-api-key
+  ingress:
+    host: "api.traveler.com"
+    connection_limit: 10
+    limit_burst_multiplier: 2
+    requests_per_second_limit: 20
+    limit_rate_after: 5
 
 database:
   replicas: 1

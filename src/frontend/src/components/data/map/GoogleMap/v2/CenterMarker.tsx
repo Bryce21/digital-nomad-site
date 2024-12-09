@@ -19,6 +19,7 @@ export function CenterMarker(props: CenterMarkerProps) {
       long={props.latLong.lng}
       iconColor='red'
       data={props}
+      onClick={() => {}}
       popupData={() => renderPopup(props)}
     />
   );

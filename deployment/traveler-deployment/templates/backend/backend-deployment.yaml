@@ -50,3 +50,19 @@ spec:
                   key: DB_NAME
             - name: LAT_LONG_COLLECTION
               value: "{{ .Values.backend.env.LAT_LONG_COLLECTION }}"
+            - name: VIATOR_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-{{ .Values.backend.secrets.name }}
+                  key: VIATOR_API_KEY
+            - name: VIATOR_API_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-{{ .Values.backend.secrets.name }}
+                  key: VIATOR_API_HOST
+            - name: VIATOR_API_HEADER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-{{ .Values.backend.secrets.name }}
+                  key: VIATOR_API_HEADER
+            

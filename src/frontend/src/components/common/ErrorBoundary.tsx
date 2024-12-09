@@ -1,6 +1,6 @@
 /*eslint-disable */
-import React, { Component } from "react";
-import ErrorComponent from "./ErrorComponent";
+import React, { Component } from 'react';
+import ErrorComponent from './ErrorComponent';
 
 // From - https://www.developerway.com/posts/how-to-handle-errors-in-react
 // eslint-disable-next-line
