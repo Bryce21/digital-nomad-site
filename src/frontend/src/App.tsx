@@ -76,7 +76,6 @@ function App() {
                 },
               ]}
             />
-            <div>Ad here</div>
             <Collapse
               size='large'
               collapsible={!location ? 'disabled' : undefined}
@@ -93,10 +92,7 @@ function App() {
                 },
               ]}
             />
-            <div>Ad here</div>
             <OpenAiWidget location={location} />
-
-            <div>Ad here</div>
           </Content>
         </Layout>
       </Flex>
