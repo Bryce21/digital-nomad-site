@@ -13,7 +13,7 @@ metadata:
     nginx.ingress.kubernetes.io/limit-burst-multiplier: "{{ .Values.backend.ingress.limit_burst_multiplier }}"
     nginx.ingress.kubernetes.io/limit-rate-after: "{{ .Values.backend.ingress.limit_rate_after }}"
 
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
 
     # nginx.ingress.kubernetes.io/limit-request-body: "1048576"
     # nginx.ingress.kubernetes.io/limit-request-fields: "50"

@@ -17,6 +17,7 @@ spec:
   tls:
   - hosts:
     - {{ .Values.frontend.ingress.host }}
+    - {{ .Values.backend.ingress.host }}
     secretName: {{ .Release.Name }}-tls
   ingressClassName: nginx
   rules:
