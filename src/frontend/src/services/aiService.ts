@@ -14,7 +14,7 @@ async function getFoodSuggestions(
   inputAddress: string
 ): Promise<CleanedAiResponse> {
   const res = await axios.get<CleanedAiResponse>(
-    `http://${process.env.REACT_APP_BACKEND_HOST}/openai/food`,
+    `${process.env.REACT_APP_HTTP_METHOD}://${process.env.REACT_APP_BACKEND_HOST}/openai/food`,
     {
       params: {
         location: inputAddress,
@@ -28,7 +28,7 @@ async function getThingsToDoSuggestions(
   inputAddress: string
 ): Promise<CleanedAiResponse> {
   const res = await axios.get<CleanedAiResponse>(
-    `http://${process.env.REACT_APP_BACKEND_HOST}/openai/toDo`,
+    `${process.env.REACT_APP_HTTP_METHOD}://${process.env.REACT_APP_BACKEND_HOST}/openai/toDo`,
     {
       params: {
         location: inputAddress,

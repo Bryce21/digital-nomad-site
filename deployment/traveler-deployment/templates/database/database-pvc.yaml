@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ .Release.Name }}-database-pvc
 spec:
-  storageClassName: {{ .Values.database.volumeMount.storageClass }}
+  storageClassName: {{ .Values.database.volumeMount.storageClassName }}
   accessModes:
     - ReadWriteOnce
   resources:

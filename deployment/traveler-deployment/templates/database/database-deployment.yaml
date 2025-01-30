@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ .Release.Name }}-database
   labels:
@@ -17,6 +17,13 @@ spec:
       containers:
         - name: database
           image: {{ .Values.database.image.repository }}:{{ .Values.database.image.tag }}
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
           ports:
             - containerPort: {{ .Values.database.containerPort }}
           volumeMounts:

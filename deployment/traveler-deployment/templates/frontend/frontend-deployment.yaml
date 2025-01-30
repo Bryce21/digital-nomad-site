@@ -14,11 +14,17 @@ spec:
       labels:
         app: frontend
     spec:
-
       imagePullSecrets:
         - name: {{ .Values.global.imagePullSecrets }}
       containers:
         - name: frontend
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
           imagePullPolicy: Always
           image: {{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}
           ports:

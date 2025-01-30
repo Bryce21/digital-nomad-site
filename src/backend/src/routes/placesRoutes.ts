@@ -89,7 +89,6 @@ placesRouter.get(
         (req: PlacesNearbySubRequest) => getPlacesNearby(req),
       );
 
-      console.log('allPlaces', allPlaces);
       const responseData: ApiPlacesResponse[] = allPlaces.flatMap(
         (p: CachedData<PlacesNearbyResponseData>, index: number) => {
           // shouldn't be possible to hit unknown, just type bs

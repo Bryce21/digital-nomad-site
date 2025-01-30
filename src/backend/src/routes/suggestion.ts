@@ -21,7 +21,6 @@ suggestionRouter.post(
   body('contact').notEmpty().trim().isEmail().escape(),
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      console.log(req.body);
       const result = validationResult(req);
       if (!result.isEmpty()) {
         throw new Error(`Validation error: ${JSON.stringify(result.array())}`);

@@ -46,7 +46,9 @@ export function GoogleMap(props: GoogleMapProps) {
               onClick={() => {
                 if (place.place_id) {
                   window.open(
-                    `https://www.google.com/maps/place/?q=place_id:${place.place_id}`,
+                    encodeURI(
+                      `https://www.google.com/maps/place/?q=place_id:${place.place_id}`
+                    ),
                     '_blank'
                   );
                 }

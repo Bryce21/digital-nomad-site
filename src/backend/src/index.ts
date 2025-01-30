@@ -6,9 +6,13 @@ import { connectToDatabase, initializeDB } from './services/database';
 import { suggestionRouter } from './routes/suggestion';
 import Logger from './services/logger';
 import { viatorRouter } from './routes/viatorRoutes';
+import morgan from 'morgan';
 
 const app: Express = express();
 app.use(express.json());
+app.use(
+  morgan(':method :url :status :res[content-length] - :response-time ms'),
+);
 const port = process.env.PORT || 3000;
 
 // set cors - todo restrict this more eventually
@@ -35,7 +39,6 @@ app.use('/healthz', (req, res) => {
 
 const startApiServer = () => {
   app.listen(port, () => {
-    Logger.info(`[server]: Server is running at http://localhost:${port}`);
     console.log(`[server]: Server is running at http://localhost:${port}`);
   });
 };
@@ -45,5 +48,6 @@ connectToDatabase()
   .then(() => startApiServer())
   .catch((err) => {
     Logger.error(`Error connecting to database: ${err}`);
+    console.log(`Error starting api: ${err}`);
     process.exit(1);
   });

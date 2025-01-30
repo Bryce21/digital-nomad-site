@@ -35,6 +35,13 @@ spec:
               port: {{ .Values.backend.containerPort }}
             initialDelaySeconds: 5
             periodSeconds: 10
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
           env:
             - name: PORT
               value: "{{ .Values.backend.env.PORT }}"

@@ -11,7 +11,7 @@ export default async function getAttractions(
 ): Promise<AttractionResponse> {
   console.log('pagination', pagination);
   const res = await axios.get<AttractionResponse>(
-    `http://${process.env.REACT_APP_BACKEND_HOST}/viator/attractions`,
+    `${process.env.REACT_APP_HTTP_METHOD}://${process.env.REACT_APP_BACKEND_HOST}/viator/attractions`,
     {
       params: {
         address: inputAddress,

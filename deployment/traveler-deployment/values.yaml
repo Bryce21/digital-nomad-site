@@ -2,9 +2,17 @@
 global:
   imagePullSecrets: registrypullsecret
 
+cert:
+  staging:
+    email: ""
+    server: ""
+  prod:
+    email: ""
+    server: ""
+
 frontend:
   ingress:
-    host: app.traveler.com
+    host: travel-dash.com
     connection_limit: 10
     limit_burst_multiplier: 2
     requests_per_second_limit: 20
@@ -15,8 +23,8 @@ frontend:
   image:
     repository: bryce21/digital-nomad-site
     tag: digital-nomad-site-frontend-latest
-  containerPort: 3000
-  targetPort: 80
+  containerPort: 80
+  listenPort: 80
 
 backend:
   service:
@@ -34,24 +42,24 @@ backend:
   secrets:
     name: besecret
     googleApiKey:
-      key: key
+      key: ""
     openaiApiKey:
-      key: key
+      key: ""
     dbConnString:
-      key: mongodb://dev-database-service:27017/digitalNomadSite
+      key: mongodb://prod-database-service:27017/digitalNomadSite
     dbName:
       key: digitalNomadSite
     viatorApiKey:
-      key: key
+      key: ""
     viatorApiHost:
       key: api.sandbox.viator.com
     viatorApiHeader:
       key: exp-api-key
   ingress:
-    host: "api.traveler.com"
+    host: "api.travel-dash.com"
     connection_limit: 10
     limit_burst_multiplier: 2
-    requests_per_second_limit: 20
+    requests_per_second_limit: 5
     limit_rate_after: 5
 
 database:
@@ -62,6 +70,6 @@ database:
     tag: 4.4
   containerPort: 27017
   volumeMount:
-    mountPath: /data/db
-    storageClass: standard
-    size: 10Gi
+    mountPath: "/data/db"
+    storageClassName: do-block-storage
+    size: 5Gi
