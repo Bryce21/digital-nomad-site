@@ -22,6 +22,5 @@ export default async function getAttractions(
       },
     }
   );
-  console.log('attractions res', res);
   return res.data;
 }

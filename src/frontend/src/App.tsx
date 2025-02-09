@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Collapse, Flex, Layout } from 'antd';
 import { Content, Header } from 'antd/es/layout/layout';
 import { MapWidget } from './components/data/map/GoogleMap/v2/MapWidget';
-import LocationAndTime from './components/inputs/LocationAndTime';
+import HeaderComponent from './components/inputs/HeaderComponent';
 import { OpenAiWidget } from './components/data/openai/OpenAiWidget';
 import { AppDispatch, RootState } from './store/store';
 import { setSearchAddress } from './store/reducers/searchReducer';
@@ -51,11 +51,12 @@ function App() {
               padding: 0,
             }}
           >
-            <LocationAndTime
+            <HeaderComponent
               onSearch={(value) => getAddressAutoComplete(value)}
               onFinish={(data) => {
                 setLocation(data.location);
               }}
+              initialValue={location!}
             />
           </Header>
 
@@ -63,6 +64,7 @@ function App() {
             <Collapse
               size='large'
               collapsible={!location ? 'disabled' : undefined}
+              defaultActiveKey={['1']}
               items={[
                 {
                   key: '1',
@@ -79,6 +81,7 @@ function App() {
             <Collapse
               size='large'
               collapsible={!location ? 'disabled' : undefined}
+              defaultActiveKey={['1']}
               items={[
                 {
                   key: '1',

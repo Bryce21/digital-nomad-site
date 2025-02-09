@@ -12,7 +12,6 @@ export interface OpenAiWidgetProps {
 }
 
 export function OpenAiWidget(props: OpenAiWidgetProps) {
-  console.log('open api widget rendering');
   const { location } = props;
   return (
     <div>
@@ -23,6 +22,7 @@ export function OpenAiWidget(props: OpenAiWidgetProps) {
             size='large'
             collapsible={!location ? 'disabled' : undefined}
             style={{ maxHeight: '60vh' }}
+            defaultActiveKey={['1']}
             items={[
               {
                 key: '1',
@@ -43,6 +43,7 @@ export function OpenAiWidget(props: OpenAiWidgetProps) {
           <Collapse
             className='collapse-panel'
             size='large'
+            defaultActiveKey={['1']}
             collapsible={!location ? 'disabled' : undefined}
             items={[
               {

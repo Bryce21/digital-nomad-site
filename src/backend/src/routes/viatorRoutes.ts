@@ -78,8 +78,6 @@ viatorRouter.get(
         },
         { start: data.start, count: data.count },
       );
-      console.log('attractions res', attractions.products.length);
-
       return res.json({ attractions, destination });
     } catch (err) {
       console.error('Error getting attractions: ', err);
