@@ -8,9 +8,15 @@ import {
   MenuUnfoldOutlined,
   PieChartOutlined,
 } from '@ant-design/icons';
-import { InfoCircleTwoTone, AppstoreOutlined } from '@ant-design/icons';
+import {
+  InfoCircleTwoTone,
+  AppstoreOutlined,
+  QuestionCircleOutlined,
+} from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import SideBar, { MenuItem } from '../SideBar';
+import InfoModal from '../modals/InfoModal';
+import LinkModal from '../modals/LinkModal';
 
 interface OnFinishData {
   location: string;
@@ -28,15 +34,13 @@ export default function HeaderComponent(props: HeaderComponentProps) {
   const [options, setOptions] = useState<string[]>([props.initialValue]);
 
   // modals
-  // const [linkModalOpen, setLinkModalOpen] = useState(false);
-
   const [openModal, setOpenModal] = useState<'links' | 'info' | undefined>();
 
   const items: MenuItem[] = [
     {
       key: 'info',
       label: 'Info',
-      icon: <AppstoreOutlined />,
+      icon: <QuestionCircleOutlined />,
       onClick: () => {
         if (openModal === 'info') {
           setOpenModal(undefined);
@@ -145,32 +149,17 @@ export default function HeaderComponent(props: HeaderComponentProps) {
       </Col>
 
       {openModal === 'info' && (
-        <Modal
-          open
-          footer={null}
+        <InfoModal
           onOk={() => setOpenModal(undefined)}
           onCancel={() => setOpenModal(undefined)}
-        >
-          <p>
-            This site helps you explore around an area for cool things to do.
-          </p>
-          <p>
-            But in order to find cool things it needs to know the area to look
-            around.
-          </p>
-          <p>Insert an address (or city) into the search bar to get started.</p>
-        </Modal>
+        />
       )}
 
       {openModal === 'links' && (
-        <Modal
-          open
-          footer={null}
-          onOk={() => setOpenModal(undefined)}
+        <LinkModal
           onCancel={() => setOpenModal(undefined)}
-        >
-          This would be Links modal!
-        </Modal>
+          onOk={() => setOpenModal(undefined)}
+        />
       )}
     </Row>
   );

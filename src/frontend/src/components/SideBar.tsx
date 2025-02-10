@@ -54,6 +54,7 @@ export default function SideBar(props: SideBarProps) {
           style={{
             marginBottom: 16,
             alignSelf: 'center',
+            marginLeft: '10px',
           }}
         >
           {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
