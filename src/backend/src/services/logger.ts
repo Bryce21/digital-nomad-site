@@ -9,7 +9,6 @@ const Logger = winston.createLogger({
       format: winston.format.simple(),
     }),
   ],
-  ignoreRoute: (req: { path: string }, res: any) => req.path === '/healthz',
 });
 
 export default Logger;
