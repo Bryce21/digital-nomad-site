@@ -1,18 +1,6 @@
-import { AutoComplete, Button, Col, Form, Row, Modal, Menu } from 'antd';
+import { AutoComplete, Button, Col, Form, Row } from 'antd';
 
-import {
-  ContainerOutlined,
-  DesktopOutlined,
-  MailOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  PieChartOutlined,
-} from '@ant-design/icons';
-import {
-  InfoCircleTwoTone,
-  AppstoreOutlined,
-  QuestionCircleOutlined,
-} from '@ant-design/icons';
+import { AppstoreOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import SideBar, { MenuItem } from '../SideBar';
 import InfoModal from '../modals/InfoModal';

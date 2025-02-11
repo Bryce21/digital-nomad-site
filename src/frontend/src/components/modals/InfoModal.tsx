@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutoComplete, Button, Col, Form, Row, Modal, Menu } from 'antd';
+import { Modal } from 'antd';
 
 export type InfoModalProps = {
   onOk: () => void;

@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-  AutoComplete,
-  Button,
-  Col,
-  Form,
-  Row,
-  Modal,
-  Menu,
-  List,
-  Typography,
-} from 'antd';
+import { Modal, List, Typography } from 'antd';
 
 const { Title, Link } = Typography;
 
@@ -61,7 +51,7 @@ export default function LinkModal(props: LinkModalProps) {
   return (
     <Modal
       title='Useful Travel Links'
-      open={true}
+      open
       footer={null}
       onOk={() => props.onOk()}
       onCancel={() => props.onCancel()}

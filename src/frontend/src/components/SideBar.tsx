@@ -1,14 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { AutoComplete, Button, Col, Form, Row, Modal, Menu } from 'antd';
-import {
-  ContainerOutlined,
-  DesktopOutlined,
-  MailOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  PieChartOutlined,
-  AppstoreOutlined,
-} from '@ant-design/icons';
+import React, { useState } from 'react';
+import { Button, Col, Menu } from 'antd';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 
 import type { MenuProps } from 'antd';
 
