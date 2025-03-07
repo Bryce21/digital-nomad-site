@@ -7,6 +7,8 @@ export default async function getAttractions(
   filters?: {
     maxPrice?: number;
     minRating?: number;
+    searchTerm?: string;
+    minPrice?: number;
   }
 ): Promise<AttractionResponse> {
   console.log('pagination', pagination);
@@ -18,7 +20,9 @@ export default async function getAttractions(
         start: pagination?.start,
         count: pagination?.count,
         maxPrice: filters?.maxPrice,
+        minPrice: filters?.minPrice,
         minRating: filters?.minRating,
+        searchTerm: filters?.searchTerm,
       },
     }
   );

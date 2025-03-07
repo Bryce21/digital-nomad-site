@@ -2,6 +2,7 @@ import Model from '../types/models/model';
 import * as Database from './database';
 import LatLong from '../types/models/latLong';
 import { Collection } from 'mongodb';
+import { omit } from 'lodash';
 
 export type Address = String;
 
@@ -45,7 +46,7 @@ async function set<T extends Model>(key: CacheKey, value: T): Promise<void> {
       },
       {
         $set: {
-          ...value,
+          ...omit(value, '_id'),
           createdAt: new Date().toISOString(),
         },
       },
@@ -54,7 +55,10 @@ async function set<T extends Model>(key: CacheKey, value: T): Promise<void> {
       },
     );
   } catch (err) {
-    console.error(`Failed to set cache. Key: ${key}, value: ${value}`, { err });
+    console.error(
+      `Failed to set cache. Key: ${key}, value: ${JSON.stringify(value)}`,
+      { err },
+    );
   }
 }
 

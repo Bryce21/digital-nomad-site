@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Search, SetSearchPayload } from '../types';
 import { LatLng, Place } from '../../types/types';
 
-const INITIAL_LOCATION = 'New York, NY, USA';
+const INITIAL_LOCATION = 'Madrid, Spain';
 
 export const initialState: Search = {
   inputAddress: INITIAL_LOCATION,

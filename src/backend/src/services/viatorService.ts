@@ -13,6 +13,8 @@ import {
   AttractionFilters,
   AttractionPagination,
   AttractionSearchResult,
+  SearchFreeTextBody,
+  SearchFreeTextProductFiltering,
 } from '../types/viator';
 
 async function lookupDestination(
@@ -105,13 +107,73 @@ async function callSearchForAttractions(
   return res.data as AttractionSearchResult;
 }
 
+async function callSearchFreeText(
+  searchTerm: string,
+  filtering: AttractionFilters,
+  pagination: AttractionPagination,
+): Promise<AttractionSearchResult> {
+  const body: SearchFreeTextBody = {
+    searchTerm: `${searchTerm}`,
+    productFiltering: {
+      destination: filtering.destination,
+      price: {
+        from: filtering?.lowestPrice,
+        to: filtering.highestPrice,
+      },
+      rating: {
+        from: filtering.rating?.from,
+        to: filtering.rating?.to,
+      },
+    },
+    productSorting: {
+      sort: 'REVIEW_AVG_RATING',
+      order: 'DESCENDING',
+    },
+    searchTypes: [
+      {
+        searchType: 'PRODUCTS',
+        pagination: {
+          start: pagination?.start,
+          count: pagination?.count,
+        },
+      },
+    ],
+    currency: 'USD',
+  };
+
+  // console.log('body', body);
+  console.log(JSON.stringify(body));
+
+  const res = await axios.post(
+    `https://${getValue('VIATOR_API_HOST', 'api.sandbox.viator.com')}/partner/search/freetext`,
+    body,
+    {
+      headers: {
+        [getRequiredValue<string>('VIATOR_API_HEADER')]:
+          getRequiredValue('VIATOR_API_KEY'),
+        Accept: 'application/json;version=2.0',
+        'Accept-Language': 'en-us',
+      },
+    },
+  );
+
+  return {
+    products: res.data.products.results,
+    totalCount: res.data.products.totalCount,
+  } as AttractionSearchResult;
+}
+
 async function searchForAttractions(
   filtering: AttractionFilters,
-  pagination?: AttractionPagination,
+  pagination: AttractionPagination,
+  searchTerm?: string,
 ): Promise<AttractionSearchResult> {
   // todo do cache lookup based on destination id here
   // have to search by pagination though otherwise won't get correct info
 
+  if (searchTerm) {
+    return callSearchFreeText(searchTerm, filtering, pagination);
+  }
   return callSearchForAttractions(filtering, pagination);
 }
 

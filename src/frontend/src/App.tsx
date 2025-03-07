@@ -10,6 +10,7 @@ import { AppDispatch, RootState } from './store/store';
 import { setSearchAddress } from './store/reducers/searchReducer';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import ViatorAttractions from './components/data/viatorAttractions/ViatorAttractions';
+import ViatorGrid from './components/data/viatorAttractions/GridV2/ViatorGrid';
 
 function App() {
   const dispatch: AppDispatch = useAppDispatch();
@@ -47,7 +48,7 @@ function App() {
               left: 0,
               width: '100%',
               // height: "100%",
-              zIndex: 1000,
+              zIndex: 10000,
               padding: 0,
             }}
           >
@@ -87,8 +88,14 @@ function App() {
                   key: '1',
                   label: 'Attractions',
                   children: location ? (
-                    <div style={{ height: '100vh' }}>
-                      <ViatorAttractions />
+                    <div
+                      style={{
+                        height: '100vh',
+                        // position: 'relative',
+                        // overflowY: 'auto',
+                      }}
+                    >
+                      <ViatorGrid />
                     </div>
                   ) : undefined,
                   // extra: <Setting onClick={() => {}} />,

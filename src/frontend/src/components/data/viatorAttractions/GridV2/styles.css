@@ -1,0 +1,11 @@
+.filters-container {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1000;
+  padding: 10px;
+}
+
+.filters-row {
+  width: 100%;
+}

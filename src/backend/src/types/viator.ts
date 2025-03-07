@@ -78,3 +78,32 @@ export type AttractionSearchResult = {
   products: Attraction[];
   totalCount: number;
 };
+
+export type SearchFreeTextProductFiltering = {
+  destination: string;
+  price?: {
+    from?: number;
+    to?: number;
+  };
+  rating?: {
+    from?: number;
+    to?: number;
+  };
+};
+
+export type SearchFreeTextBody = {
+  searchTerm: string;
+  productFiltering: SearchFreeTextProductFiltering;
+  productSorting: {
+    sort: 'REVIEW_AVG_RATING';
+    order: 'DESCENDING';
+  };
+  searchTypes: {
+    searchType: 'PRODUCTS';
+    pagination: {
+      start: number;
+      count: number;
+    };
+  }[];
+  currency: string;
+};

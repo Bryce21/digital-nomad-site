@@ -40,13 +40,13 @@ viatorRouter.get(
   query('minPrice').optional().isInt(),
   query('minRating').optional().isInt(),
   query('maxRating').optional().isInt(),
+  query('searchTerm').optional().isString(),
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const result = validationResult(req);
       if (!result.isEmpty()) {
         throw new Error(`Validation error: ${JSON.stringify(result.array())}`);
       }
-      //   throw new Error('Instant error');
       const data = matchedData(req);
       console.log('data', data);
 
@@ -77,6 +77,7 @@ viatorRouter.get(
           rating,
         },
         { start: data.start, count: data.count },
+        data?.searchTerm,
       );
       return res.json({ attractions, destination });
     } catch (err) {

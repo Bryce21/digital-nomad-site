@@ -32,11 +32,13 @@ export function GoogleMap(props: GoogleMapProps) {
       >
         {[
           <CenterMarker
+            key={-1}
             latLong={props.center}
             centerAddress={props.centerAddress}
           />,
-          ...props.markerData.map((place: Place) => (
+          ...props.markerData.map((place: Place, index: number) => (
             <GoogleMapMarker<Place>
+              key={index}
               lat={place.lat}
               long={place.long}
               // todo need to set different colors depending on the type

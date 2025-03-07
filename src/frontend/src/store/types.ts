@@ -30,8 +30,8 @@ export type SetSearchPayload = {
 
 export type ImageVariant = {
   url: string;
-  height: string;
-  width: string;
+  height: number;
+  width: number;
 };
 
 export type Image = {
@@ -49,7 +49,7 @@ export type ReviewSource = {
 
 export type Reviews = {
   totalReviews: number;
-  combinedAverageRating: number;
+  combinedAverageRating?: number;
   sources: ReviewSource[];
 };
 
@@ -72,11 +72,21 @@ export type Attraction = {
   pricing: Pricing;
 };
 
+export type AttractionFilters = {
+  maxPrice?: number;
+  minPrice?: number;
+  minRating?: number;
+  maxRating?: number;
+  searchText?: string;
+};
+
 export type AttractionsState = {
   loading: boolean;
   data: Attraction[];
-  totalCount: number;
-  currentPage: number;
+  totalCount?: number;
+  pageStart?: number;
   destination?: ViatorDestination;
   error?: Error;
+  filters: AttractionFilters;
+  pageSize: number;
 };
