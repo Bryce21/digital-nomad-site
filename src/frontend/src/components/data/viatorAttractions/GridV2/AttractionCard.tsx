@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, Button, Typography, Rate } from 'antd';
 import { Attraction, ImageVariant } from '../../../../store/types';
 
-const { Meta } = Card;
 const { Title, Text } = Typography;
 
 export type AttractionCardProps = {
@@ -56,7 +55,14 @@ export default function AttractionCard({
     >
       <Card
         size='small'
-        cover={<img src={getImageFromAttraction(attraction, cardWidth)} />}
+        cover={
+          // eslint-disable-next-line
+          <img
+            src={getImageFromAttraction(attraction, cardWidth)}
+            // eslint-disable-next-line
+            alt='Supplied by the attracion provider'
+          />
+        }
         actions={[
           <Button
             type='primary'

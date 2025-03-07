@@ -9,7 +9,6 @@ import { OpenAiWidget } from './components/data/openai/OpenAiWidget';
 import { AppDispatch, RootState } from './store/store';
 import { setSearchAddress } from './store/reducers/searchReducer';
 import { useAppDispatch, useAppSelector } from './store/hooks';
-import ViatorAttractions from './components/data/viatorAttractions/ViatorAttractions';
 import ViatorGrid from './components/data/viatorAttractions/GridV2/ViatorGrid';
 
 function App() {

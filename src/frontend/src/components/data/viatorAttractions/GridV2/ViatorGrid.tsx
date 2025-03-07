@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Pagination, Row, Col } from 'antd';
+import { ErrorBoundary } from '../../../common/ErrorBoundary';
+import ErrorComponent from '../../../common/ErrorComponent';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-import {
-  Pagination,
-  Card,
-  Button,
-  Row,
-  Col,
-  Typography,
-  Rate,
-  Spin,
-} from 'antd';
-import { DollarOutlined } from '@ant-design/icons';
+
 import './styles.css';
 
 import { RootState } from '../../../../store/store';
@@ -21,16 +14,12 @@ import {
   setPageSize,
   setPageStart,
 } from '../../../../store/reducers/attractionsReducer';
-import { Attraction, ImageVariant } from '../../../../store/types';
-import { error } from 'console';
-import ErrorComponent from '../../../common/ErrorComponent';
-import Filters from './Filters';
-import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
-import { LoadingComponent } from './LoadingComponent';
-import AttractionCard from './AttractionCard';
+import { Attraction } from '../../../../store/types';
 
-const { Meta } = Card;
-const { Title, Text } = Typography;
+import Filters from './Filters';
+
+import LoadingComponent from './LoadingComponent';
+import AttractionCard from './AttractionCard';
 
 const getTargetWidth = () => {
   const containerWidth = window.innerWidth; // Get screen width
@@ -116,9 +105,9 @@ export default function ViatorGrid() {
     handlePageLookup();
   }, [inputAddress, filters, pageStart]);
 
-  const handleOnChange = (page: number, pageSize: number) => {
-    const start = (page - 1) * pageSize;
-    dispatch(setPageSize(pageSize));
+  const handleOnChange = (page: number, pageSizeInput: number) => {
+    const start = (page - 1) * pageSizeInput;
+    dispatch(setPageSize(pageSizeInput));
     dispatch(setPageStart(start));
   };
 
@@ -129,14 +118,18 @@ export default function ViatorGrid() {
 
     return (
       <ErrorBoundary>
-        <div className='filters-container'>{<Filters />}</div>
+        <div className='filters-container'>
+          <Filters />
+        </div>
         <hr />
         {loading ? (
           <LoadingComponent />
         ) : (
           <Row gutter={[16, 16]}>
+            {/* eslint-disable-next-line */}
             {attractions.map((attraction: Attraction, index: number) => {
               return (
+                // eslint-disable-next-line
                 <Col xs={24} sm={12} md={8} lg={6} key={index}>
                   <AttractionCard
                     attraction={attraction}

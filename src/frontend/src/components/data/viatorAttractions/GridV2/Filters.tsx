@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Input, InputNumber, Form, Row, Col, Button, Slider } from 'antd';
 import { useAppDispatch } from '../../../../store/hooks';
 import { AttractionFilters } from '../../../../store/types';
@@ -18,7 +18,10 @@ export default function Filters() {
   const [hasErrors, setHasErrors] = useState(false);
   const [formHasChanged, setFormHasChanged] = useState(false);
 
-  const handleChange = (key: string, value: any) => {
+  const handleChange = (
+    key: string,
+    value: string | number | undefined | null
+  ) => {
     form.validateFields();
     const updatedFilters = { ...filters, [key]: value };
     setFiltersState(updatedFilters);
@@ -36,7 +39,7 @@ export default function Filters() {
       }}
     >
       <Row
-        className={'filters-row'}
+        className='filters-row'
         // style={{ width: '100%', border: 'solid red' }}
         gutter={8}
       >
@@ -53,7 +56,7 @@ export default function Filters() {
         <Col xs={12} sm={6} lg={4}>
           <Form.Item
             label='Min Price'
-            name={'minPrice'}
+            name='minPrice'
             // todo this doesn't quite work right with middle sizes - ipads
             labelCol={{ span: 12 }}
             wrapperCol={{ span: 12 }}
@@ -87,7 +90,7 @@ export default function Filters() {
         <Col xs={12} sm={6} lg={4}>
           <Form.Item
             label='Max Price'
-            name={'maxPrice'}
+            name='maxPrice'
             labelCol={{ span: 12 }}
             wrapperCol={{ span: 12 }}
           >

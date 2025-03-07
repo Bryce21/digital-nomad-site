@@ -38,6 +38,7 @@ export function GoogleMap(props: GoogleMapProps) {
           />,
           ...props.markerData.map((place: Place, index: number) => (
             <GoogleMapMarker<Place>
+              // eslint-disable-next-line
               key={index}
               lat={place.lat}
               long={place.long}
