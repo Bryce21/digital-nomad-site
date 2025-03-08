@@ -26,7 +26,7 @@ export function OpenAiWidget(props: OpenAiWidgetProps) {
             items={[
               {
                 key: '1',
-                label: 'Food',
+                label: 'Most popular foods',
                 children: (
                   <div style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                     <ListDisplay

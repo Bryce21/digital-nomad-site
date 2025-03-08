@@ -68,7 +68,7 @@ function App() {
               items={[
                 {
                   key: '1',
-                  label: 'Map',
+                  label: 'View Locations',
                   children: location ? (
                     <div style={{ height: '100vh' }}>
                       <MapWidget location={location} />
@@ -85,7 +85,7 @@ function App() {
               items={[
                 {
                   key: '1',
-                  label: 'Attractions',
+                  label: 'Popular Attractions',
                   children: location ? (
                     <div
                       style={{
