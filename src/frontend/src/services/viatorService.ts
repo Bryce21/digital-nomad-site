@@ -11,7 +11,6 @@ export default async function getAttractions(
     minPrice?: number;
   }
 ): Promise<AttractionResponse> {
-  console.log('pagination', pagination);
   const res = await axios.get<AttractionResponse>(
     `${process.env.REACT_APP_HTTP_METHOD}://${process.env.REACT_APP_BACKEND_HOST}/viator/attractions`,
     {

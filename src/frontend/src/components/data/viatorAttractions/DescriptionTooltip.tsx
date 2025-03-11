@@ -7,7 +7,6 @@ function DescriptionTooltip(props: CustomTooltipProps) {
   const { value } = props;
   if (!value) return null;
 
-  console.log('here!!');
   return (
     <Tooltip placement='top'>{value}</Tooltip>
     // <div className="description-tooltip">

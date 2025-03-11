@@ -157,8 +157,6 @@ export function MapWithData(props: MapWithDataProps) {
   const map = useMap();
 
   useEffect(() => {
-    console.log('rerender useEffect firing!!');
-
     const data = async () => {
       try {
         const res: PlacesNearbyResponse = await getPlacesNearby(

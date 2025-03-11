@@ -34,7 +34,6 @@ export const fetchAttractionsPage = createAsyncThunk(
     minRating?: number;
     searchTerm?: string;
   }) => {
-    console.log('info', { maxPrice, minRating });
     const res = await getAttractions(inputAddress, pagination, {
       maxPrice,
       minRating,

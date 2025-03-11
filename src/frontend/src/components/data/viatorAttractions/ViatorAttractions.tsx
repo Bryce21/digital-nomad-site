@@ -30,7 +30,6 @@ export default function ViatorAttractions() {
   );
 
   const inputAddress = useAppSelector((state: RootState) => {
-    console.log('state', state);
     // this component doesn't render unless the address exists
     // eslint-disable-next-line
     return state?.search?.inputAddress!;

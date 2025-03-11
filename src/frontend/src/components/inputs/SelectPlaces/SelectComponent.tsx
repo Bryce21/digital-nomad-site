@@ -33,7 +33,6 @@ export function SelectComponent(props: SelectProps) {
       placeholder='Please select'
       defaultValue={[]}
       onChange={(v) => {
-        console.log('v', v);
         props.onChange(v);
       }}
       options={props.options}
